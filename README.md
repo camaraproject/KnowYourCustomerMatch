@@ -7,12 +7,11 @@
 <a href="https://github.com/camaraproject/KnowYourCustomerMatch/releases/latest" title="Latest Release"><img src="https://img.shields.io/github/release/camaraproject/KnowYourCustomerMatch?style=plastic"></a>
 <a href="https://github.com/camaraproject/Governance/blob/main/ProjectStructureAndRoles.md" title="Incubating API Repository"><img src="https://img.shields.io/badge/Incubating%20API%20Repository-green?style=plastic"></a>
 
-
 # KnowYourCustomerMatch
 
 Incubating API Repository to evolve and maintain the definitions and documentation of KnowYourCustomerMatch Service API(s) within the Sub Project [Know Your Customer](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer)
 
-* API Repository [wiki page](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer) !! Update the link when wiki page for the API repository is created !
+* API Repository [wiki page](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer) !! Update the link when wiki page for the API repository is created
 
 ## Scope
 
