@@ -11,7 +11,7 @@
 
 Incubating API Repository to evolve and maintain the definitions and documentation of KnowYourCustomerMatch Service API(s) within the Sub Project [Know Your Customer](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer)
 
-* API Repository [wiki page](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer) !! Update the link when wiki page for the API repository is created
+* API Repository [wiki page](https://lf-camaraproject.atlassian.net/wiki/x/EQAzC)
 
 ## Scope
 
