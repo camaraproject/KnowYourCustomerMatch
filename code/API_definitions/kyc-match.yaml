@@ -230,7 +230,7 @@ components:
       required: false
       schema:
         $ref: "#/components/schemas/XCorrelator"
-        
+
   schemas:
 
     XCorrelator:
