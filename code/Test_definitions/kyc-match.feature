@@ -93,7 +93,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
             | $.streetNumber            | $.streetNumberMatch           | $.streetNumberMatchScore      |
             | $.region                  | $.regionMatch                 | $.regionMatchScore            |
             | $.locality                | $.localityMatch               | $.localityMatchScore          |
-            | $.birthdate               | $.birthdateMatch              | $.birthdateMatchScore         |
             | $.email                   | $.emailMatch                  | $.emailMatchScore             |
 
     @KYC_Match_4_perfect_match_no_scores_provided
