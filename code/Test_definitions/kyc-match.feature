@@ -65,7 +65,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
             | $.birthdate               | $.birthdateMatch              |
             | $.email                   | $.emailMatch                  |
             | $.gender                  | $.genderMatch                 |
-            | $.placeOfBirth            | $.placeOfBirthMatch           |
+            | $.cityOfBirth             | $.cityOfBirthMatch            |
             | $.countryOfBirth          | $.countryOfBirthMatch         |
             | $.nationality             | $.nationalityMatch            |
 
@@ -99,7 +99,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
             | $.locality                | $.localityMatch               | $.localityMatchScore          |
             | $.birthdate               | $.birthdateMatch              | $.birthdateMatchScore         |
             | $.email                   | $.emailMatch                  | $.emailMatchScore             |
-            | $.placeOfBirth            | $.placeOfBirthMatch           | $.placeOfBirthMatchScore      |
+            | $.cityOfBirth             | $.cityOfBirthMatch            | $.cityOfBirthMatchScore       |
 
     @KYC_Match_4_perfect_match_no_scores_provided
     Scenario Outline: Validate success response when providing specific property with true value
