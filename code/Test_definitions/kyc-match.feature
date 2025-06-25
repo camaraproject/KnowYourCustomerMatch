@@ -80,7 +80,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
         And the response header "Content-Type" is "application/json"
         And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
         And the response property "<response_property_path>" is equal to "false"
-        And the response property "<response_score_property_path>" is equal to an integer value between 0 and 100
+        And the response property "<response_score_property_path>" is equal to an integer value between 0 and 99
 
         Examples:
             | request_property_path     | response_property_path        | response_score_property_path  |
@@ -101,7 +101,36 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
             | $.email                   | $.emailMatch                  | $.emailMatchScore             |
             | $.placeOfBirth            | $.placeOfBirthMatch           | $.placeOfBirthMatchScore      |
 
-    @KYC_Match_4_success_multiple_optional_parameter_combinations
+    @KYC_Match_4_perfect_match_no_scores_provided
+    Scenario Outline: Validate success response when providing specific property with true value
+        Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
+        And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does perfectly match the value stored in the MNO system
+        When the request "KYC_Match" is sent
+        Then the response status code is 200
+        And the response header "x-correlator" has same value as the request header "x-correlator"
+        And the response header "Content-Type" is "application/json"
+        And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+        And the response property "<response_property_path>" is equal to "true"
+        And the response property "<response_score_property_path>" is not existing
+
+        Examples:
+            | request_property_path     | response_property_path        | response_score_property_path  |
+            | $.idDocument              | $.idDocumentMatch             | $.idDocumentMatchScore        |
+            | $.name                    | $.nameMatch                   | $.nameMatchScore              |
+            | $.givenName               | $.givenNameMatch              | $.givenNameMatchScore         |
+            | $.familyName              | $.familyNameMatch             | $.familyNameMatchScore        |
+            | $.nameKanaHankaku         | $.nameKanaHankakuMatch        | $.nameKanaHankakuMatchScore   |
+            | $.nameKanaZenkaku         | $.nameKanaZenkakuMatch        | $.nameKanaZenkakuMatchScore   |
+            | $.middleNames             | $.middleNamesMatch            | $.middleNamesScore            |
+            | $.familyNameAtBirth       | $.familyNameAtBirthMatch      | $.familyNameAtBirthMatchScore |
+            | $.address                 | $.addressMatch                | $.addressMatchScore           |
+            | $.streetName              | $.streetNameMatch             | $.streetNameMatchScore        |
+            | $.streetNumber            | $.streetNumberMatch           | $.streetNumberMatchScore      |
+            | $.region                  | $.regionMatch                 | $.regionMatchScore            |
+            | $.locality                | $.localityMatch               | $.localityMatchScore          |
+            | $.birthdate               | $.birthdateMatch              | $.birthdateMatchScore         |
+            | $.email                   | $.emailMatch                  | $.emailMatchScore             |
+    @KYC_Match_5_success_multiple_optional_parameter_combinations
     Scenario: Validate success response when providing different optional parameter combinations
         Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
         And the request body property "$.idDocument" is set to a valid identity document
@@ -131,7 +160,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
         And the response header "Content-Type" is "application/json"
         And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
 
-    @KYC_Match_5_success_id_document_required
+    @KYC_Match_6_success_id_document_required
     # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
     Scenario: Validate success when idDocument is required to perform the match validation for any other property
         Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
