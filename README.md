@@ -17,7 +17,7 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 * Service API(s) “KnowYourCustomerMatch” (see APIBacklog.md) 
 * The API(s) provide(s) the API consumer with the ability to:  
-  * §Short API scope description§ !! Add here a scope description according to the API proposal
+  * compare the information tha the Service Provider (SP) has for a particular user with that on file (and verified) by the user's Operator in their own KYC records, in order for the SP to confirm the accuracy of the information and provide a specific service to the user.
 * Describe, develop, document, and test the API(s)
 * Started: September 2023 (within [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer))
 * Incubating stage since: February 2025
@@ -37,9 +37,9 @@ The repository has no (pre)releases yet, work in progress is within the main bra
 
 * Meetings are held virtually <!-- for new, independent Sandbox API repositories request a meeting link from the LF admin team or replace the information with the existing meeting information of the Sub Project -->
 
-  * Schedule: !! tbd
-  * [Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meetings/telcoapi) !! Update this link with your meeting registration/join link and delete the task
-  * Minutes: Access [meeting minutes](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/80117795/Know+Your+Customer) !! update this link to your minutes archive page using the "Share" link and delete the task
+  * Schedule: Bi-weekly, Tuesday, 09:00 CEST (07:00 UTC) (till October 27th 2024)
+  * [Registration / Join](https://zoom-lfx.platform.linuxfoundation.org/meeting/96235150735?password=7e3fea67-a76e-4941-8a70-392cf5545917)
+  * Access [Meeting Minutes](https://lf-camaraproject.atlassian.net/wiki/spaces/CAM/pages/14551060/KnowYourCustomer+Meeting+Minutes)
 * Mailing List
   * Subscribe / Unsubscribe to the mailing list <https://lists.camaraproject.org/g/sp-kyc>.
   * A message to the community of this Sub Project can be sent using <sp-kyc@lists.camaraproject.org>.
