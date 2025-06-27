@@ -210,7 +210,7 @@ paths:
                     emailMatchScore: 87
                     genderMatch: 'false'
                     cityOfBirthMatch: 'false'
-                    cityOfBirthScore: 86
+                    cityOfBirthMatchScore: 86
                     countryOfBirthMatch: 'true'
                     nationalityMatch: 'true'
 
@@ -273,12 +273,12 @@ components:
         idDocument:
           type: string
           description: Id number associated to the official identity document in the country. It may contain alphanumeric characters.
-        
+
         idDocumentType:
           type: string
           enum: [passport, national_id_card, residence_permit, diplomatic_id, driver_licence, social_security_id, other]
           description: Type of the official identity document provided.
-        
+
         idDocumentExpiryDate:
           type: string
           format: date
@@ -361,15 +361,15 @@ components:
             - MALE
             - FEMALE
             - OTHER
-            
+
         cityOfBirth:
           type: string
           description: City where the customer was born.
-          
+
         countryOfBirth:
           type: string
           description: Country where the customer was born. Format ISO 3166-1 alpha-2.
-        
+
         nationality:
           type: string
           description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
@@ -387,7 +387,7 @@ components:
     MatchScoreResult:
       type: integer
       description: |
-        Indicates the similarity score assigned to the input value when it does not exactly match the value stored in the operator's system. 
+        Indicates the similarity score assigned to the input value when it does not exactly match the value stored in the operator's system.
         This property shall only be returned when the value of the corresponding match field is `false`.
         A perfect match with a score of 100 is indicated by `match` being 'true' and no `matchScore` is returned in this case.
       minimum: 0
