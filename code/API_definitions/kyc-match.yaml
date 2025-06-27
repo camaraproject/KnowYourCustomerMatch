@@ -210,7 +210,7 @@ paths:
                     emailMatchScore: 87
                     genderMatch: 'false'
                     cityOfBirthMatch: 'false'
-                    cityOfBirthScore: 86
+                    cityOfBirthMatchScore: 86
                     countryOfBirthMatch: 'true'
                     nationalityMatch: 'true'
 
