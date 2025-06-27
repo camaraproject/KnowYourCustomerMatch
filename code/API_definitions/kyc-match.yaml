@@ -69,7 +69,7 @@ info:
     url: https://www.apache.org/licenses/LICENSE-2.0.html
   version: wip
 
-  x-camara-commonalities: 0.5
+  x-camara-commonalities: 0.6
 
 servers:
   - url: '{apiRoot}/kyc-match/vwip'
@@ -121,6 +121,8 @@ paths:
                 value:
                   phoneNumber: '+34629255833'
                   idDocument: 66666666q
+                  idDocumentType: passport
+                  idDocumentExpiryDate: '2027-07-12'
                   name: Federica Sanchez Arjona
                   givenName: Federica
                   familyName: Sanchez Arjona
@@ -139,9 +141,14 @@ paths:
                   birthdate: '1978-08-22'
                   email: abc@example.com
                   gender: OTHER
+                  cityOfBirth: Madrid
+                  countryOfBirth: ES
+                  nationality: ES
               Three-Legged Without Phone Number Example:
                 value:
                   idDocument: 66666666q
+                  idDocumentType: passport
+                  idDocumentExpiryDate: '2027-07-12'
                   name: Federica Sanchez Arjona
                   givenName: Federica
                   familyName: Sanchez Arjona
@@ -160,6 +167,9 @@ paths:
                   birthdate: '1978-08-22'
                   email: abc@example.com
                   gender: OTHER
+                  cityOfBirth: Madrid
+                  countryOfBirth: ES
+                  nationality: ES
 
       responses:
         '200':
@@ -177,6 +187,8 @@ paths:
                 KYC_Match200Example:
                   value:
                     idDocumentMatch: 'true'
+                    idDocumentTypeMatch: 'true'
+                    idDocumentExpiryDateMatch: 'true'
                     nameMatch: 'true'
                     givenNameMatch: 'not_available'
                     familyNameMatch: 'not_available'
@@ -197,6 +209,10 @@ paths:
                     emailMatch: 'false'
                     emailMatchScore: 87
                     genderMatch: 'false'
+                    cityOfBirthMatch: 'false'
+                    cityOfBirthScore: 86
+                    countryOfBirthMatch: 'true'
+                    nationalityMatch: 'true'
 
         '400':
           $ref: '#/components/responses/Generic400'
@@ -257,6 +273,16 @@ components:
         idDocument:
           type: string
           description: Id number associated to the official identity document in the country. It may contain alphanumeric characters.
+        
+        idDocumentType:
+          type: string
+          enum: [passport, national_id_card, residence_permit, diplomatic_id, driver_licence, social_security_id, other]
+          description: Type of the official identity document provided.
+        
+        idDocumentExpiryDate:
+          type: string
+          format: date
+          description: Expiration date of the identity document (ISO 8601).
 
         name:
           type: string
@@ -335,7 +361,18 @@ components:
             - MALE
             - FEMALE
             - OTHER
-
+            
+        cityOfBirth:
+          type: string
+          description: City where the customer was born.
+          
+        countryOfBirth:
+          type: string
+          description: Country where the customer was born. Format ISO 3166-1 alpha-2.
+        
+        nationality:
+          type: string
+          description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
     MatchResult:
       type: string
       description: |
@@ -363,6 +400,14 @@ components:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
             - description: Indicates whether Id number associated to the ID document of the customer matches with the one on the Operator's system.
+        idDocumentTypeMatch:
+          allOf:
+            - $ref: '#/components/schemas/MatchResult'
+            - description: Indicates whether document type associated to the ID document of the customer matches with the one on the Operator's system.
+        idDocumentExpiryDateMatch:
+          allOf:
+            - $ref: '#/components/schemas/MatchResult'
+            - description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
         nameMatch:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
@@ -461,6 +506,20 @@ components:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
             - description: Indicates whether the gender of the customer matches with the one on the Operator's system.
+        cityOfBirthMatch:
+          allOf:
+            - $ref: '#/components/schemas/MatchResult'
+            - description: Indicates whether the city at birth of the customer matches with the one on the Operator's system
+        cityOfBirthMatchScore:
+          $ref: '#/components/schemas/MatchScoreResult'
+        countryOfBirthMatch:
+          allOf:
+            - $ref: '#/components/schemas/MatchResult'
+            - description: Indicates whether the country at birth of the customer matches with the one on the Operator's system
+        nationalityMatch:
+          allOf:
+            - $ref: '#/components/schemas/MatchResult'
+            - description: Indicates whether the nationality of the customer matches with the one on the Operator's system
 
     ErrorInfo:
       type: object
@@ -612,6 +671,7 @@ components:
               value:
                 status: 404
                 code: NOT_FOUND
+                message: The specified resource is not found.
             GENERIC_404_IDENTIFIER_NOT_FOUND:
               description: The phone number is not associated with a CSP customer account
               value:
