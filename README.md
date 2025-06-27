@@ -17,7 +17,7 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 * Service API(s) “KnowYourCustomerMatch” (see APIBacklog.md) 
 * The API(s) provide(s) the API consumer with the ability to:  
-  * compare the information tha the Service Provider (SP) has for a particular user with that on file (and verified) by the user's Operator in their own KYC records, in order for the SP to confirm the accuracy of the information and provide a specific service to the user.
+  * compare the information that the Service Provider (SP) has for a particular user with that on file (and verified) by the user's Operator in their own KYC records, in order for the SP to confirm the accuracy of the information and provide a specific service to the user.
 * Describe, develop, document, and test the API(s)
 * Started: September 2023 (within [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer))
 * Incubating stage since: February 2025
