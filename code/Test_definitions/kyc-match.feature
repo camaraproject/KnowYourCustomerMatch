@@ -1,4 +1,4 @@
-Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
+Feature: CAMARA Know Your Customer Match API, v0.4.0-rc.1 - Operation KYC_Match
     # Input to be provided by the implementation to the tester
     #
     # Implementation indications:
@@ -7,7 +7,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     # Testing assets:
     # * A mobile line identified by its phone number "phoneNumber"
     #
-    # References to OAS spec schemas refer to schemas specifies in kyc-match.yaml, version wip
+    # References to OAS spec schemas refer to schemas specifies in kyc-match.yaml, version v0.4.0-rc.1
 
     Background: Common KYC_Match setup
         Given an environment at "apiRoot"
