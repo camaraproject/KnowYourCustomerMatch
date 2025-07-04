@@ -26,7 +26,7 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 * Note: Please be aware that the project will have updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until a new release is created. For example, changes may be reverted before a release is created. For best results, use the latest available release.
 
-* **NEW:  Pre-release of CAMARA KYC Match is [r1.1](https://github.com/camaraproject/KnowYourCustomerMatch/tree/r1.1)**. The Release Tag is [r1.1](https://github.com/camaraproject/KnowYourCustomerFill-in/releases/tag/r1.1).
+* **NEW:  Pre-release of CAMARA KYC Match is [r1.1](https://github.com/camaraproject/KnowYourCustomerMatch/tree/r1.1)**. The Release Tag is [r1.1](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r1.1).
 
 **Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
 
