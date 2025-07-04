@@ -30,6 +30,8 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 **Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
 
+For changes see [CHANGELOG.md](https://github.com/camaraproject/KnowYourCustomerMatch/blob/main/CHANGELOG.md)
+
 ## Contributing
 
 * Meetings are held virtually <!-- for new, independent Sandbox API repositories request a meeting link from the LF admin team or replace the information with the existing meeting information of the Sub Project -->
