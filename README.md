@@ -24,14 +24,11 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 ## Release Information
 
-**Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
+* Note: Please be aware that the project will have updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until a new release is created. For example, changes may be reverted before a release is created. For best results, use the latest available release.
 
-The repository has no (pre)releases yet, work in progress is within the main branch.
-<!-- Optional: an explicit listing of the latest (pre-)release with additional information, e.g. links to the API definitions -->
-<!-- In addition use/uncomment one or multiple the following alternative options when becoming applicable -->
-<!-- Pre-releases of this sub project are available in https://github.com/camaraproject/KnowYourCustomerMatch/releases -->
-<!-- The latest public release is available here: https://github.com/camaraproject/KnowYourCustomerMatch/releases/latest -->
-<!-- For changes see [CHANGELOG.md](https://github.com/camaraproject/KnowYourCustomerMatch/blob/main/CHANGELOG.md) -->
+* **NEW:  Pre-release of CAMARA KYC Match is [r1.1](https://github.com/camaraproject/KnowYourCustomerMatch/tree/r1.1)**. The Release Tag is [r1.1](https://github.com/camaraproject/KnowYourCustomerFill-in/releases/tag/r1.1).
+
+**Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
 
 ## Contributing
 
