@@ -31,9 +31,9 @@ The API definition(s) are based on
 This is the a release candidate for the CAMARA KnowYourCustomer Match API, updating the previous release to the CAMARA Guidelines and Identity & Consent Management for the Meta Release Fall25. Some new input paramenters, to be matched, have been introduced.
 
 - API definition **with inline documentation**:
-  - OpenAPI [YAML spec file](https://github.com/camaraproject/EnergyFootprintNotification/blob/r1.1/code/API_definitions/kyc-match.yaml)
-  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/EnergyFootprintNotification/r1.1/code/API_definitions/kyc-match.yaml&nocors)
-  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/EnergyFootprintNotification/r1.1/code/API_definitions/kyc-match.yaml)
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.1/code/API_definitions/kyc-match.yaml)
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.1/code/API_definitions/kyc-match.yaml&nocors)
+  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.1/code/API_definitions/kyc-match.yaml)
 
 ## Please note:
 
