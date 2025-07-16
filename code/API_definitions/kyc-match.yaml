@@ -25,7 +25,7 @@ info:
 
     The following figure is the generic high-level flows of this API.
 
-    <img width="848" alt="KYC_Match_flow" src="https://raw.githubusercontent.com/camaraproject/KnowYourCustomer/main/documentation/API_documentation/assets/kyc-match_flow.png">
+    <img width="848" alt="KYC_Match_flow" src="https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.1/documentation/API_documentation/assets/kyc-match_flow.png">
 
     Note:
 
@@ -67,12 +67,12 @@ info:
   license:
     name: Apache 2.0
     url: https://www.apache.org/licenses/LICENSE-2.0.html
-  version: wip
+  version: 0.4.0-rc.1
 
   x-camara-commonalities: 0.6
 
 servers:
-  - url: '{apiRoot}/kyc-match/vwip'
+  - url: '{apiRoot}/kyc-match/v0.4rc1'
     variables:
       apiRoot:
         default: http://localhost:9091
