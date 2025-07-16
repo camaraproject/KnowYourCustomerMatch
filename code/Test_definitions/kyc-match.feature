@@ -11,7 +11,7 @@ Feature: CAMARA Know Your Customer Match API, v0.4.0-rc.1 - Operation KYC_Match
 
     Background: Common KYC_Match setup
         Given an environment at "apiRoot"
-        And the resource "/kyc-match/vwip/match"
+        And the resource "/kyc-match/v0.4rc1/match"
         And the header "Content-Type" is set to "application/json"
         And the header "Authorization" is set to a valid access token
         And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
