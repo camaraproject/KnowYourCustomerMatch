@@ -17,7 +17,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
     And the request body is set by default to a request body compliant with the schema
 
-
   # Happy path scenarios
 
   @KYC_Match_1_success_request_response
@@ -139,7 +138,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
 
   @KYC_Match_5_success_specific_property_false
   # This scenario test the false result as scenario KYC_Match_3_success_specific_property_score but without the score properties
-  Scenario Outline: Validate success response when provided property value is a perfect match
+  Scenario Outline: Validate success response when providing specific property with false value and without the score properties
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does perfectly match the value stored in the MNO system
     When the request "KYC_Match" is sent
@@ -227,7 +226,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 401
 
-
   @KYC_Match_401.2_invalid_access_token
   Scenario: Error response for invalid access token
     Given the header "Authorization" is set to an invalid access token
@@ -236,7 +234,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "UNAUTHENTICATED"
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 401
-
 
   @KYC_Match_401.3_no_header_authorization
   Scenario: Error response for no header "Authorization"
@@ -247,11 +244,10 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 401
 
-
   # Generic 400 errors
 
   @KYC_Match_400.1_no_request_body
-    Scenario: Missing request body
+  Scenario: Missing request body
     Given the request body is not included
     When the HTTP "POST" request is sent
     Then the response status code is 400
@@ -259,7 +255,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-   @KYC_Match_400.2_empty_request_body
+  @KYC_Match_400.2_empty_request_body
   Scenario: Empty object as request body
     Given the request body is set to "{}"
     When the HTTP "POST" request is sent
@@ -277,7 +273,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-
   # API Specific Errors
 
   @KYC_Match_10_invalid_param_combination
@@ -291,18 +286,16 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 400
 
-
   @KYC_Match_11_phone_number_provided_does_not_match_the_token
   Scenario: Error when the phone number provided in the request body does not match the phone number associated with the access token
     # To test this, a token has to be obtained for a different phoneNumber
-    Given the request body property "$.phoneNumber" is set to a valid testing phone number 
+    Given the request body property "$.phoneNumber" is set to a valid testing phone number
     And the header "Authorization" is set to a valid access token emitted for a different phone number
     When the request "KYC_Match" is sent
     Then the response status code is 403
     And the response property "$.code" is "INVALID_TOKEN_CONTEXT"
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 403
-
 
   @KYC_Match_12_idDocument_required
   # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
@@ -314,7 +307,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "KNOW_YOUR_CUSTOMER.ID_DOCUMENT_REQUIRED"
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 403
-
 
   @KYC_Match_13_idDocument_mismatch_when_idDocument_is_required
   # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
