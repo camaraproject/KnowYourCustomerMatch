@@ -176,27 +176,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   @KYC_Match_6_success_multiple_optional_parameter_combinations
   Scenario: Validate success response when providing different optional parameter combinations
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
-    And the request body property "$.idDocument" is set to a valid identity document
-    And the request body property "$.name" is set to a valid name
-    And the request body property "$.givenName" is set to a valid given name
-    And the request body property "$.familyName" is set to a valid family name
-    And the request body property "$.nameKanaHankaku" is set to a valid name
-    And the request body property "$.nameKanaZenkaku" is set to a valid name
-    And the request body property "$.middleNames" is set to a valid middle names
-    And the request body property "$.familyNameAtBirth" is set to a valid family name at birth
-    And the request body property "$.address" is set to a valid address
-    And the request body property "$.streetName" is set to a valid street name of the address
-    And the request body property "$.streetNumber" is set to a valid street number of the address
-    And the request body property "$.postalCode" is set to a valid postal code of the address
-    And the request body property "$.region" is set to a valid region of the address
-    And the request body property "$.locality" is set to a valid locality of the address
-    And the request body property "$.country" is set to the country of the address value that complies with the ISO 3166-1 alpha-2 format
-    And the request body property "$.houseNumberExtension" is set to a valid house number extension of the address
-    And the request body property "$.birthdate" is set to a birthdate value that complies with the ISO 8601 calendar date format "YYYY-MM-DD"
-    And the request body property "$.email" is set to a email value that complies with the RFC format "{local-part}@{domain}"
-    And the request body property "$.gender" is set to a valid gender value that belongs to the enumeration ("MALE", "FEMALE", "OTHER")
-    And the request body property "$.nationality" is set to the country for the nationality and complies with the ISO 3166-1 alpha-2 format
-    And the given request body is populated with any random combination of afore mention optional parameters
+    And the request body contains valid required properties
+    And the request body contains a random combination of valid optional parameters, including idDocument, name, givenName, familyName, nameKanaHankaku, nameKanaZenkaku, middleNames, familyNameAtBirth, address, streetName, streetNumber, postalCode, region, locality, country, houseNumberExtension, birthdate, email, gender, nationality fields
     When the request "KYC_Match" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
