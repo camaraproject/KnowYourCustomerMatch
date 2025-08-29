@@ -177,7 +177,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   Scenario: Validate success response when providing different optional parameter combinations
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body contains valid required properties
-    And the request body contains a random combination of valid optional parameters, including idDocument, name, givenName, familyName, nameKanaHankaku, nameKanaZenkaku, middleNames, familyNameAtBirth, address, streetName, streetNumber, postalCode, region, locality, country, houseNumberExtension, birthdate, email, gender, nationality fields
+    And the request body contains a random combination of valid optional parameters, including, but not limited to, idDocument, name, givenName, familyNameAtBirth, address, streetName, streetNumber, postalCode, region, country, houseNumberExtension, birthdate, email, gender, nationality fields
     When the request "KYC_Match" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
