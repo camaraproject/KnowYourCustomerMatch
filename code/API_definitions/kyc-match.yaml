@@ -711,4 +711,3 @@ components:
                 status: 422
                 code: MISSING_IDENTIFIER
                 message: No phone number has been provided
-
