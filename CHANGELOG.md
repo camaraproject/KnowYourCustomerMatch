@@ -3,7 +3,8 @@
 
 ## Table of Contents
 
-- **[r1.1](#r11)**
+- **[r1.2](#r12)**
+- [r1.1](#r11)
 
 **Please be aware that the project will have frequent updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until it has been released. For example, changes may be reverted before a release is published. For the best results, use the latest published release.**
 
@@ -15,6 +16,41 @@ The below sections record the changes for each API version in each release as fo
 * for a public release, the consolidated changes since the previous public release
 
 **A previous changelog for this API can be found here: https://github.com/camaraproject/KnowYourCustomer/blob/main/CHANGELOG.md**
+
+# r1.2
+
+## Release Notes
+
+This public release contains the definition and documentation of:
+* know-your-customer-match v0.4.0 
+
+The API definition(s) are based on
+* Commonalities v0.6.0 [r3.3](https://github.com/camaraproject/Commonalities/releases/tag/r3.3)
+* Identity and Consent Management v0.4.0 [r3.3](https://github.com/camaraproject/IdentityAndConsentManagement/releases/tag/r3.3)
+
+## know-your-customer-match v0.4.0
+This is the latest public release for the CAMARA KnowYourCustomer Match API, updating the previous release to the CAMARA Guidelines and Identity & Consent Management for the Meta Release Fall25. Some new input paramenters, to be matched, have been introduced.
+
+- API definition **with inline documentation**:
+  - OpenAPI [YAML spec file](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.2/code/API_definitions/kyc-match.yaml)
+  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml&nocors)
+  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml)
+
+### Added
+ * N/A
+ 
+### Changed
+ * N/A
+
+### Fixed
+ * Fixed the new issues post M3 to meet M4 by @FabrizioMoggio in PR#28 (Wip for M4) https://github.com/camaraproject/KnowYourCustomerMatch/pull/28
+
+### Removed
+ * Removed wrong value in test plan by @fernandopradocabrillo in PR#26 https://github.com/camaraproject/KnowYourCustomerMatch/pull/26
+
+**Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/commits/r1.1...r1.2
+
+
 
 # r1.1
 
