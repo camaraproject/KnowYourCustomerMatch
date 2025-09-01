@@ -25,7 +25,7 @@ info:
 
     The following figure is the generic high-level flows of this API.
 
-    <img width="848" alt="KYC_Match_flow" src="https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.1/documentation/API_documentation/assets/kyc-match_flow.png">
+    <img width="848" alt="KYC_Match_flow" src="https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/documentation/API_documentation/assets/kyc-match_flow.png">
 
     Note:
 
@@ -711,3 +711,4 @@ components:
                 status: 422
                 code: MISSING_IDENTIFIER
                 message: No phone number has been provided
+
