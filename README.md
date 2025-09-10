@@ -26,7 +26,9 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 * Note: Please be aware that the project will have updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until a new release is created. For example, changes may be reverted before a release is created. For best results, use the latest available release.
 
-* **NEW:  The latest public release of CAMARA KYC Match is [r1.2](https://github.com/camaraproject/KnowYourCustomerMatch/tree/r1.2)**. The Release Tag is [r1.2](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r1.2).
+* **NEW**:  The latest public release of CAMARA KYC Match is [r1.2](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r1.2), with the following API version:
+
+* kyc-match v0.4.0
 
 * API definition **with inline documentation**:
   - OpenAPI [YAML spec file](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.2/code/API_definitions/kyc-match.yaml)
