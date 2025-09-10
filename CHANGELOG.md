@@ -41,7 +41,7 @@ This is the latest public release for the CAMARA KnowYourCustomer Match API, upd
  * Undocumented Errors note in info.description: https://github.com/camaraproject/KnowYourCustomerMatch/pull/18
  
 ### Changed
- * x-correlator new format: https://github.com/camaraproject/CallForwardingSignal/pull/180, https://github.com/camaraproject/CallForwardingSignal/pull/186
+ * Update x-correlator format: https://github.com/camaraproject/KnowYourCustomerMatch/pull/16
 
 ### Fixed
  * Fixed the new issues post M3 to meet M4 by @FabrizioMoggio in PR#28 (Wip for M4) https://github.com/camaraproject/KnowYourCustomerMatch/pull/28
@@ -84,7 +84,7 @@ This is the a release candidate for the CAMARA KnowYourCustomer Match API, updat
  * Undocumented Errors note in info.description: https://github.com/camaraproject/KnowYourCustomerMatch/pull/18
  
 ### Changed
- * x-correlator new format: https://github.com/camaraproject/CallForwardingSignal/pull/180, https://github.com/camaraproject/CallForwardingSignal/pull/186
+ * Update x-correlator format: https://github.com/camaraproject/KnowYourCustomerMatch/pull/16
 
 ### Fixed
 
