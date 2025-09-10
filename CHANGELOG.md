@@ -37,15 +37,17 @@ This is the latest public release for the CAMARA KnowYourCustomer Match API, upd
   - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml)
 
 ### Added
- * N/A
+ * Support for the following use attributes to be matched: https://github.com/camaraproject/KnowYourCustomerMatch/pull/24
+ * Undocumented Errors note in info.description: https://github.com/camaraproject/KnowYourCustomerMatch/pull/18
  
 ### Changed
- * N/A
+ * x-correlator new format: https://github.com/camaraproject/CallForwardingSignal/pull/180, https://github.com/camaraproject/CallForwardingSignal/pull/186
 
 ### Fixed
  * Fixed the new issues post M3 to meet M4 by @FabrizioMoggio in PR#28 (Wip for M4) https://github.com/camaraproject/KnowYourCustomerMatch/pull/28
 
 ### Removed
+ * Removed AUTHENTICATION_REQUIRED error code: https://github.com/camaraproject/KnowYourCustomerMatch/pull/19
  * Removed wrong value in test plan by @fernandopradocabrillo in PR#26 https://github.com/camaraproject/KnowYourCustomerMatch/pull/26
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/commits/r1.1...r1.2
