@@ -2,6 +2,7 @@ Feature: CAMARA Know Your Customer Match API, v0.4.0 - Operation KYC_Match
   # Input to be provided by the implementation to the tester
   #
   # Implementation indications:
+  # * apiRoot: API root of the server URL
   # * Whether or not the idDocument request body property is mandatory.
   #
   # Testing assets:
