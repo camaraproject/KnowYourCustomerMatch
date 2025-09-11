@@ -44,6 +44,7 @@ This is the latest public release for the CAMARA KnowYourCustomer Match API, upd
  * Update x-correlator format: https://github.com/camaraproject/KnowYourCustomerMatch/pull/16
 
 ### Fixed
+ * Fixed the missing externalDocs object and the order of two lines (version, commonalities version) by @ToshiWakayama-KDDI in PR#33 (M4 Release PR)  https://github.com/camaraproject/KnowYourCustomerMatch/pull/33
  * Fixed the new issues post M3 to meet M4 by @FabrizioMoggio in PR#28 (Wip for M4) https://github.com/camaraproject/KnowYourCustomerMatch/pull/28
 
 ### Removed
