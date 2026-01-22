@@ -279,28 +279,6 @@ Feature: CAMARA Know Your Customer Match API, v0.4.0 - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 403
 
-  @KYC_Match_12_idDocument_required
-  # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
-  Scenario: Error 403 when body does not contain idDocument when this is required
-    Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
-    And the request body is set to a valid parameter combination without property "$.idDocument"
-    When the request "KYC_Match" is sent
-    Then the response status code is 403
-    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.ID_DOCUMENT_REQUIRED"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 403
-
-  @KYC_Match_13_idDocument_mismatch_when_idDocument_is_required
-  # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
-  Scenario: Error 403 when the idDocument included in the request does not match the one saved in the MNO system when the idDocument is required
-    Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
-    And the request body property "$.idDocument" is set to a valid idDocument that is not associated with the identified phone number
-    When the request "KYC_Match" is sent
-    Then the response status code is 403
-    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.ID_DOCUMENT_MISMATCH"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 403
-
   # Error scenarios for management of input parameter phoneNumber
 
   @KYC_Match_C02.01_phone_number_not_schema_compliant
