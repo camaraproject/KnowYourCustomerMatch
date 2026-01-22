@@ -1,4 +1,4 @@
-Feature: CAMARA Know Your Customer Match API, v0.4.0 - Operation KYC_Match
+Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   # Input to be provided by the implementation to the tester
   #
   # Implementation indications:
@@ -8,11 +8,11 @@ Feature: CAMARA Know Your Customer Match API, v0.4.0 - Operation KYC_Match
   # Testing assets:
   # * A mobile line identified by its phone number "phoneNumber"
   #
-  # References to OAS spec schemas refer to schemas specifies in kyc-match.yaml, version 0.4.0
+  # References to OAS spec schemas refer to schemas specifies in kyc-match.yaml
 
   Background: Common KYC_Match setup
     Given an environment at "apiRoot"
-    And the resource "/kyc-match/v0.4/match"
+    And the resource "/kyc-match/vwip/match"
     And the header "Content-Type" is set to "application/json"
     And the header "Authorization" is set to a valid access token
     And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
