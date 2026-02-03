@@ -22,22 +22,26 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 * Started: September 2023 (within [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer))
 * Incubating stage since: February 2025
 
+<!-- CAMARA:RELEASE-INFO:START -->
+<!-- The following section is automatically maintained by the CAMARA project-administration tooling: https://github.com/camaraproject/project-administration -->
+
 ## Release Information
 
-* Note: Please be aware that the project will have updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until a new release is created. For example, changes may be reverted before a release is created. For best results, use the latest available release.
+> [!NOTE]
+> Please be aware that the project will have frequent updates to the main branch. There are no compatibility guarantees associated with code in any branch, including main, until a new release is created. For example, changes may be reverted before a release is created. **For best results, use the latest available release**.
 
-* **NEW**:  The latest public release of CAMARA KYC Match is [r1.2](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r1.2), with the following API version:
-
-* kyc-match v0.4.0
-
-* API definition **with inline documentation**:
-  - OpenAPI [YAML spec file](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.2/code/API_definitions/kyc-match.yaml)
-  - [View it on ReDoc](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml&nocors)
-  - [View it on Swagger Editor](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml&nocors)
-
-* **Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
-
+* **NEW**: The latest public release is [r1.2](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r1.2) (Fall25), with the following API versions:
+  * **kyc-match v0.4.0**
+  [[YAML]](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r1.2/code/API_definitions/kyc-match.yaml)
+  [[ReDoc]](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml&nocors)
+  [[Swagger]](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r1.2/code/API_definitions/kyc-match.yaml)
+* The latest public release is always available here: https://github.com/camaraproject/KnowYourCustomerMatch/releases/latest
+* Other releases of this repository are available in https://github.com/camaraproject/KnowYourCustomerMatch/releases
 * For changes see [CHANGELOG.md](https://github.com/camaraproject/KnowYourCustomerMatch/blob/main/CHANGELOG.md)
+
+_The above section is automatically synchronized by CAMARA project-administration._
+<!-- CAMARA:RELEASE-INFO:END -->
+* Note: **Releases of the KnowYourCustomerMatch API until Spring25 are available in [KnowYourCustomer](https://github.com/camaraproject/KnowYourCustomer).**
 
 ## Contributing
 
