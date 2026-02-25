@@ -141,7 +141,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   # This scenario test the false result as scenario KYC_Match_3_success_specific_property_score but without the score properties
   Scenario Outline: Validate success response when providing specific property with false value and without the score properties
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
-    And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does perfectly match the value stored in the MNO system
+    And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does not match the value stored in the MNO system
     When the request "KYC_Match" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
