@@ -73,7 +73,7 @@ externalDocs:
   url: https://github.com/camaraproject/KnowYourCustomerMatch
 
 servers:
-  - url: '{apiRoot}/kyc-match/v0.4'
+  - url: '{apiRoot}/kyc-match/vwip'
     variables:
       apiRoot:
         default: http://localhost:9091
