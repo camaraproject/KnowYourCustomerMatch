@@ -547,6 +547,7 @@ components:
 
     ErrorInfo:
       type: object
+      description: Common schema for errors
       required:
         - status
         - code
