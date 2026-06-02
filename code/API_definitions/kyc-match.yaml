@@ -225,6 +225,7 @@ paths:
 components:
   securitySchemes:
     openId:
+      description: OpenID Connect authentication
       type: openIdConnect
       openIdConnectUrl: https://example.com/.well-known/openid-configuration
 
@@ -417,6 +418,7 @@ components:
 
     KYC_MatchResponse:
       type: object
+      description: kyc-match response
       properties:
         idDocumentMatch:
           allOf:
