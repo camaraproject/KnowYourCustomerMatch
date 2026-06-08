@@ -414,7 +414,7 @@ components:
         bankAccountNumberMatch:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
+            - description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
 
         nameMatch:
           allOf:
