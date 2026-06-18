@@ -1,4 +1,4 @@
-223openapi: 3.0.3
+openapi: 3.0.3
 info:
   title: Know Your Customer Match
 
@@ -421,129 +421,129 @@ components:
       description: kyc-match response
       properties:
         idDocumentMatch:
+          description: Indicates whether Id number associated to the ID document of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether Id number associated to the ID document of the customer matches with the one on the Operator's system.
         idDocumentTypeMatch:
+          description: Indicates whether document type associated to the ID document of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether document type associated to the ID document of the customer matches with the one on the Operator's system.
         idDocumentExpiryDateMatch:
+          description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
         nameMatch:
+          description: Indicates whether the complete name of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the complete name of the customer matches with the one on the Operator's system.
         nameMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         givenNameMatch:
+          description: Indicates whether First name/given name of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether First name/given name of the customer matches with the one on the Operator's system.
         givenNameMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         familyNameMatch:
+          description: Indicates whether last name/ family name/ surname of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether last name/ family name/ surname of the customer matches with the one on the Operator's system.
         familyNameMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         nameKanaHankakuMatch:
+          description: Indicates whether complete name of the customer in Hankaku-Kana format (reading of name) for Japan matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether complete name of the customer in Hankaku-Kana format (reading of name) for Japan matches with the one on the Operator's system.
         nameKanaHankakuMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         nameKanaZenkakuMatch:
+          description: Indicates whether complete name of the customer in Zenkaku-Kana format (reading of name) for Japan matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether complete name of the customer in Zenkaku-Kana format (reading of name) for Japan matches with the one on the Operator's system.
         nameKanaZenkakuMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         middleNamesMatch:
+          description: Indicates whether the middle names of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the middle names of the customer matches with the one on the Operator's system.
         middleNamesMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         familyNameAtBirthMatch:
+          description: Indicates whether the Family Name At Birth of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the Family Name At Birth of the customer matches with the one on the Operator's system.
         familyNameAtBirthMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         addressMatch:
+          description: Indicates whether complete address of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether complete address of the customer matches with the one on the Operator's system.
         addressMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         streetNameMatch:
+          description: Indicates whether the street name of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the street name of the customer matches with the one on the Operator's system.
         streetNameMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         streetNumberMatch:
+          description: Indicates whether the street number of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the street number of the customer matches with the one on the Operator's system.
         streetNumberMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         postalCodeMatch:
+          description: Indicates whether the postal code / zip code of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the postal code / zip code of the customer matches with the one on the Operator's system.
         regionMatch:
+          description: Indicates whether the region of the customer's address matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the region of the customer's address matches with the one on the Operator's system.
         regionMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         localityMatch:
+          description: Indicates whether the locality of the customer's address matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the locality of the customer's address matches with the one on the Operator's system.
         localityMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         countryMatch:
+          description: Indicates whether the country of the customer's address matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the country of the customer's address matches with the one on the Operator's system.
         houseNumberExtensionMatch:
+          description: Indicates whether the house number extension of the customer's address with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the house number extension of the customer's address with the one on the Operator's system.
         birthdateMatch:
+          description: Indicates whether the birthdate of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the birthdate of the customer matches with the one on the Operator's system.
         emailMatch:
+          description: Indicates whether the email address of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the email address of the customer matches with the one on the Operator's system.
         emailMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         genderMatch:
+          description: Indicates whether the gender of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the gender of the customer matches with the one on the Operator's system.
         cityOfBirthMatch:
+          description: Indicates whether the city at birth of the customer matches with the one on the Operator's system
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the city at birth of the customer matches with the one on the Operator's system
         cityOfBirthMatchScore:
           $ref: '#/components/schemas/MatchScoreResult'
         countryOfBirthMatch:
+          description: Indicates whether the country at birth of the customer matches with the one on the Operator's system
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the country at birth of the customer matches with the one on the Operator's system
         nationalityMatch:
+          description: Indicates whether the nationality of the customer matches with the one on the Operator's system
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the nationality of the customer matches with the one on the Operator's system
 
     ErrorInfo:
       type: object
