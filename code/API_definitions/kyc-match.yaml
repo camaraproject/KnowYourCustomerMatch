@@ -1,4 +1,4 @@
-openapi: 3.0.3
+223openapi: 3.0.3
 info:
   title: Know Your Customer Match
 
@@ -301,12 +301,12 @@ components:
 
         nameKanaHankaku:
           type: string
-          maxLength: 150
+          maxLength: 256
           description: Complete name of the customer in Hankaku-Kana format (reading of name) for Japan.
 
         nameKanaZenkaku:
           type: string
-          maxLength: 150
+          maxLength: 256
           description: Complete name of the customer in Zenkaku-Kana format (reading of name) for Japan.
 
         middleNames:
@@ -316,12 +316,12 @@ components:
 
         familyNameAtBirth:
           type: string
-          maxLength: 100
+          maxLength: 150
           description: Last/family/sur- name at birth of the customer.
 
         address:
           type: string
-          maxLength: 100
+          maxLength: 256
           description: Complete address of the customer.  For some countries, it is built following the usual concatenation of parameters in a country, but for other countries, this is not the case.  For some countries, it can use streetName, streetNumber and/or houseNumberExtension. For example, in ESP, streetName+streetNumber; in NLD, it can be streetName+streetNumber or streetName+streetNumber+houseNumberExtension.
 
         streetName:
