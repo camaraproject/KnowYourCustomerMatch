@@ -111,9 +111,8 @@ paths:
         - openId:
             - kyc-match:match
 
-
       parameters:
-        - $ref: "../common/CAMARA_common.yaml#/components/parameters/x-correlator"
+        - $ref: '#/components/parameters/x-correlator'
 
       requestBody:
         required: true
@@ -182,7 +181,7 @@ paths:
           description: OK
           headers:
             x-correlator:
-              $ref: "../common/CAMARA_common.yaml#/components/headers/x-correlator"
+              $ref: "#/components/headers/X-Correlator"
 
           content:
             application/json:
@@ -220,20 +219,16 @@ paths:
                     countryOfBirthMatch: 'true'
                     nationalityMatch: 'true'
 
-        '400':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic400'
-
-        '401':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic401'
-
-        '403':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic403'
-
-        '404':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic404'
-
-        '422':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic422'
+        "400":
+          $ref: '#/components/responses/Generic400'
+        "401":
+          $ref: '#/components/responses/Generic401'
+        "403":
+          $ref: '#/components/responses/Generic403'
+        "404":
+          $ref: '#/components/responses/Generic404'
+        "422":
+          $ref: '#/components/responses/Generic422'
 
 components:
   securitySchemes:
@@ -241,6 +236,21 @@ components:
       description: OpenID Connect authentication
       type: openIdConnect
       openIdConnectUrl: https://example.com/.well-known/openid-configuration
+
+  headers:
+    X-Correlator:
+      description: Correlation id for the different services
+      required: false
+      schema:
+        $ref: "#/components/schemas/XCorrelator"
+
+  parameters:
+    x-correlator:
+      name: x-correlator
+      in: header
+      description: Correlation id for the different services
+      schema:
+        $ref: "#/components/schemas/XCorrelator"
 
   schemas:
 
