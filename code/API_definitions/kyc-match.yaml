@@ -100,7 +100,7 @@ paths:
 
 
       parameters:
-        - $ref: '#/components/parameters/x-correlator'
+        - $ref: '../common/CAMARA_common.yaml#/components/parameters/x-correlator'
 
       requestBody:
         required: true
@@ -169,7 +169,7 @@ paths:
           description: OK
           headers:
             x-correlator:
-              $ref: '#/components/headers/x-correlator'
+              $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
 
           content:
             application/json:
@@ -208,19 +208,19 @@ paths:
                     nationalityMatch: 'true'
 
         '400':
-          $ref: '#/components/responses/Generic400'
+          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic400'
 
         '401':
-          $ref: '#/components/responses/Generic401'
+          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic401'
 
         '403':
-          $ref: '#/components/responses/Generic403'
+          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic403'
 
         '404':
-          $ref: '#/components/responses/Generic404'
+          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic404'
 
         '422':
-          $ref: '#/components/responses/Generic422'
+          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic422'
 
 components:
   securitySchemes:
@@ -258,10 +258,7 @@ components:
 
       properties:
         phoneNumber:
-          type: string
-          description: A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.
-          pattern: '^\+[1-9][0-9]{4,14}$'
-          example: "+123456789"
+          $ref: "../common/CAMARA_common.yaml#/components/schemas/PhoneNumber"
 
         idDocument:
           type: string
