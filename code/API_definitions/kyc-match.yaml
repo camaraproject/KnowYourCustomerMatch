@@ -368,7 +368,7 @@ components:
         birthdate:
           type: string
           format: date
-          maxLength: 64
+          maxLength: 10
           description: The birthdate of the customer, in RFC 3339 / ISO 8601 calendar date format (YYYY-MM-DD).
 
         email:
