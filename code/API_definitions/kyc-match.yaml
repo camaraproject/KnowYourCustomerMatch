@@ -289,7 +289,7 @@ components:
 
         idDocumentExpiryDate:
           type: string
-          maxLength: 16
+          maxLength: 10
           format: date
           description: Expiration date of the identity document (ISO 8601).
 
