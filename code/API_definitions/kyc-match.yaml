@@ -208,19 +208,19 @@ paths:
                     nationalityMatch: 'true'
 
         '400':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic400'
+          $ref: '#/components/responses/Generic400'
 
         '401':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic401'
+          $ref: '#/components/responses/Generic401'
 
         '403':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic403'
+          $ref: '#/components/responses/Generic403'
 
         '404':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic404'
+          $ref: '#/components/responses/Generic404'
 
         '422':
-          $ref: '../common/CAMARA_common.yaml#/components/responses/Generic422'
+          $ref: '#/components/responses/Generic422'
 
 components:
   securitySchemes:
