@@ -305,7 +305,7 @@ components:
           description: Locality of the customer's address
 
         country:
-          type: string
+          $ref: '#/components/schemas/Iso3166Alpha2'
           description: Country of the customer's address. Format ISO 3166-1 alpha-2
 
         houseNumberExtension:
@@ -335,11 +335,11 @@ components:
           description: City where the customer was born.
 
         countryOfBirth:
-          type: string
+          $ref: '#/components/schemas/Iso3166Alpha2'
           description: Country where the customer was born. Format ISO 3166-1 alpha-2.
 
         nationality:
-          type: string
+          $ref: '#/components/schemas/Iso3166Alpha2'
           description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
     MatchResult:
       type: string
@@ -360,6 +360,15 @@ components:
         A perfect match with a score of 100 is indicated by `match` being 'true' and no `matchScore` is returned in this case.
       minimum: 0
       maximum: 99
+
+Iso3166Alpha2:
+  type: string
+  format: iso3166-1-alpha-2
+  description: Two-letter ISO 3166-1 alpha-2 country code
+  pattern: ^[A-Z]{2}$
+  minLength: 2
+  maxLength: 2
+  example: "DE"
 
     KYC_MatchResponse:
       type: object
