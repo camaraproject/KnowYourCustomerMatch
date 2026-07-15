@@ -550,29 +550,6 @@ components:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
 
-    ErrorInfo:
-      type: object
-      description: Common schema for errors
-      required:
-        - status
-        - code
-        - message
-      properties:
-        message:
-          type: string
-          maxLength: 512
-          description: A human-readable description of what the event represents
-        status:
-          type: integer
-          format: int32
-          minimum: 100
-          maximum: 599
-          description: HTTP response status code
-        code:
-          type: string
-          maxLength: 96
-          description: A human-readable code to describe the error
-
   responses:
     Generic400:
       description: Bad Request
