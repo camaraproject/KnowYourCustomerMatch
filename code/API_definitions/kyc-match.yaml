@@ -112,7 +112,7 @@ paths:
             - kyc-match:match
 
       parameters:
-        - $ref: '#/components/parameters/x-correlator'
+        - $ref: '../common/CAMARA_common.yaml#/components/parameters/x-correlator'
 
       requestBody:
         required: true
@@ -183,7 +183,7 @@ paths:
           description: OK
           headers:
             x-correlator:
-              $ref: "#/components/headers/X-Correlator"
+              $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
 
           content:
             application/json:
@@ -240,29 +240,7 @@ components:
       type: openIdConnect
       openIdConnectUrl: https://example.com/.well-known/openid-configuration
 
-  headers:
-    X-Correlator:
-      description: Correlation id for the different services
-      required: false
-      schema:
-        $ref: "#/components/schemas/XCorrelator"
-
-  parameters:
-    x-correlator:
-      name: x-correlator
-      in: header
-      description: Correlation id for the different services
-      schema:
-        $ref: "#/components/schemas/XCorrelator"
-
   schemas:
-
-    XCorrelator:
-      type: string
-      pattern: ^[a-zA-Z0-9-_:;.\/<>{}]{0,256}$
-      maxLength: 256
-      description: Correlator string, UUID format recommended but any string matching the pattern can be used
-      example: "b4333c46-49c0-4f62-80d7-f0ef930f1c46"
 
     KYC_MatchRequestBody:
       type: object
@@ -270,11 +248,7 @@ components:
 
       properties:
         phoneNumber:
-          type: string
-          maxLength: 16
-          description: A public identifier addressing a telephone subscription. In mobile networks it corresponds to the MSISDN (Mobile Station International Subscriber Directory Number). In order to be globally unique it has to be formatted in international format, according to E.164 standard, prefixed with '+'.
-          pattern: '^\+[1-9][0-9]{4,14}$'
-          example: "+123456789"
+          $ref: "../common/CAMARA_common.yaml#/components/schemas/PhoneNumber"
 
         idDocument:
           type: string
@@ -365,9 +339,9 @@ components:
           description: Locality of the customer's address
 
         country:
-          type: string
-          maxLength: 2
-          description: Country of the customer's address. Format ISO 3166-1 alpha-2
+          allOf:
+            - $ref: '#/components/schemas/Iso3166Alpha2'
+            - description: Country of the customer's address. Format ISO 3166-1 alpha-2
 
         houseNumberExtension:
           type: string
@@ -401,14 +375,15 @@ components:
           description: City where the customer was born.
 
         countryOfBirth:
-          type: string
-          maxLength: 2
-          description: Country where the customer was born. Format ISO 3166-1 alpha-2.
+          allOf:
+            - $ref: '#/components/schemas/Iso3166Alpha2'
+            - description: Country where the customer was born. Format ISO 3166-1 alpha-2.
 
         nationality:
-          type: string
-          maxLength: 2
-          description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
+          allOf:
+            - $ref: '#/components/schemas/Iso3166Alpha2'
+            - description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
+
     MatchResult:
       type: string
       maxLength: 13
@@ -430,6 +405,14 @@ components:
         A perfect match with a score of 100 is indicated by `match` being 'true' and no `matchScore` is returned in this case.
       minimum: 0
       maximum: 99
+
+    Iso3166Alpha2:
+      type: string
+      description: Two-letter ISO 3166-1 alpha-2 country code
+      pattern: ^[A-Za-z]{2}$
+      minLength: 2
+      maxLength: 2
+      example: "DE"
 
     KYC_MatchResponse:
       type: object
@@ -567,40 +550,17 @@ components:
           allOf:
             - $ref: '#/components/schemas/MatchResult'
 
-    ErrorInfo:
-      type: object
-      description: Common schema for errors
-      required:
-        - status
-        - code
-        - message
-      properties:
-        message:
-          type: string
-          maxLength: 512
-          description: A human-readable description of what the event represents
-        status:
-          type: integer
-          format: int32
-          minimum: 100
-          maximum: 599
-          description: HTTP response status code
-        code:
-          type: string
-          maxLength: 96
-          description: A human-readable code to describe the error
-
   responses:
     Generic400:
       description: Bad Request
       headers:
         x-correlator:
-          $ref: "#/components/headers/X-Correlator"
+          $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ErrorInfo"
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
               - type: object
                 properties:
                   status:
@@ -628,12 +588,12 @@ components:
       description: Unauthorized
       headers:
         x-correlator:
-          $ref: "#/components/headers/X-Correlator"
+          $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ErrorInfo"
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
               - type: object
                 properties:
                   status:
@@ -655,12 +615,12 @@ components:
       description: Forbidden
       headers:
         x-correlator:
-          $ref: "#/components/headers/X-Correlator"
+          $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ErrorInfo"
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
               - type: object
                 properties:
                   status:
@@ -688,12 +648,12 @@ components:
       description: Not found
       headers:
         x-correlator:
-          $ref: "#/components/headers/X-Correlator"
+          $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ErrorInfo"
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
               - type: object
                 properties:
                   status:
@@ -721,12 +681,12 @@ components:
       description: Unprocessable Content
       headers:
         x-correlator:
-          $ref: "#/components/headers/X-Correlator"
+          $ref: '../common/CAMARA_common.yaml#/components/headers/x-correlator'
       content:
         application/json:
           schema:
             allOf:
-              - $ref: "#/components/schemas/ErrorInfo"
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
               - type: object
                 properties:
                   status:
