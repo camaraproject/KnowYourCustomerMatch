@@ -409,7 +409,7 @@ components:
     Iso3166Alpha2:
       type: string
       description: Two-letter ISO 3166-1 alpha-2 country code
-      pattern: ^[A-Z]{2}$
+      pattern: ^[A-Za-z]{2}$
       minLength: 2
       maxLength: 2
       example: "DE"
