@@ -436,6 +436,7 @@ components:
             - description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
 
         bankAccountNumberMatch:
+          description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
             - description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
