@@ -120,7 +120,7 @@ paths:
           application/json:
 
             schema:
-              $ref: '#/components/schemas/KYC_MatchRequestBody'
+              $ref: '#/components/schemas/KycMatchRequestBody'
             examples:
               Two-Legged and Three-leg Access Token Example:
                 value:
@@ -189,7 +189,7 @@ paths:
             application/json:
 
               schema:
-                $ref: '#/components/schemas/KYC_MatchResponse'
+                $ref: '#/components/schemas/KycMatchResponse'
               examples:
                 KYC_Match200Example:
                   value:
