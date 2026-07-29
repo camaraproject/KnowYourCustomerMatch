@@ -342,7 +342,6 @@ components:
           description: Country of the customer's address. Format ISO 3166-1 alpha-2
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: Country of the customer's address. Format ISO 3166-1 alpha-2
 
         houseNumberExtension:
           type: string
@@ -379,13 +378,11 @@ components:
           description: Country where the customer was born. Format ISO 3166-1 alpha-2.
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: Country where the customer was born. Format ISO 3166-1 alpha-2.
 
         nationality:
           description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
 
     MatchResult:
       type: string
@@ -433,13 +430,11 @@ components:
           description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
 
         bankAccountNumberMatch:
           description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
 
         nameMatch:
           description: Indicates whether the complete name of the customer matches with the one on the Operator's system.
