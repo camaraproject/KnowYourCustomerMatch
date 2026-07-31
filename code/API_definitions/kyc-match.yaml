@@ -103,11 +103,10 @@ paths:
       description: |-
         Verify matching of a number of attributes related to a customer identity against the verified data bound to their phone number in the Operator systems. Regardless of whether the `phoneNumber` is explicitly stated in the request body, at least one of the other fields must be provided, otherwise a `HTTP 400 - KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` error will be returned.
 
-        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:
-          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
+        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:k          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
           - **false**: the attribute provided does not match with the one in the Operator systems.
           - **not_available**: the attribute is not available to validate.
-      operationId: KYC_Match
+      operationId: kycMatch
 
       security:
         - openId:
@@ -122,7 +121,7 @@ paths:
           application/json:
 
             schema:
-              $ref: '#/components/schemas/KYC_MatchRequestBody'
+              $ref: '#/components/schemas/KycMatchRequestBody'
             examples:
               Two-Legged and Three-leg Access Token Example:
                 value:
@@ -191,7 +190,7 @@ paths:
             application/json:
 
               schema:
-                $ref: '#/components/schemas/KYC_MatchResponse'
+                $ref: '#/components/schemas/KycMatchResponse'
               examples:
                 KYC_Match200Example:
                   value:
@@ -244,7 +243,7 @@ components:
 
   schemas:
 
-    KYC_MatchRequestBody:
+    KycMatchRequestBody:
       type: object
       description: Payload to validate the customer data.
 
@@ -341,9 +340,9 @@ components:
           description: Locality of the customer's address
 
         country:
+          description: Country of the customer's address. Format ISO 3166-1 alpha-2
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: Country of the customer's address. Format ISO 3166-1 alpha-2
 
         houseNumberExtension:
           type: string
@@ -377,14 +376,14 @@ components:
           description: City where the customer was born.
 
         countryOfBirth:
+          description: Country where the customer was born. Format ISO 3166-1 alpha-2.
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: Country where the customer was born. Format ISO 3166-1 alpha-2.
 
         nationality:
+          description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
           allOf:
             - $ref: '#/components/schemas/Iso3166Alpha2'
-            - description: ISO 3166-1 alpha-2 code of the customer’s nationality. In the case a customer has more than one nationality, it is supposed to be the nationality related to the ID document provided in the match request.
 
     MatchResult:
       type: string
@@ -416,7 +415,7 @@ components:
       maxLength: 2
       example: "DE"
 
-    KYC_MatchResponse:
+    KycMatchResponse:
       type: object
       description: kyc-match response
       properties:
@@ -432,12 +431,11 @@ components:
           description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether document expiration date associated to the ID document of the customer matches with the one on the Operator's system.
 
         bankAccountNumberMatch:
+          description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
           allOf:
             - $ref: '#/components/schemas/MatchResult'
-            - description: Indicates whether the provided bankAccountNumber matches the records in the API Provider (Telco operator)'s system.
 
         nameMatch:
           description: Indicates whether the complete name of the customer matches with the one on the Operator's system.
