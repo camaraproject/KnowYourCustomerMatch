@@ -101,11 +101,10 @@ paths:
       description: |-
         Verify matching of a number of attributes related to a customer identity against the verified data bound to their phone number in the Operator systems. Regardless of whether the `phoneNumber` is explicitly stated in the request body, at least one of the other fields must be provided, otherwise a `HTTP 400 - KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` error will be returned.
 
-        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:
-          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
+        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:k          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
           - **false**: the attribute provided does not match with the one in the Operator systems.
           - **not_available**: the attribute is not available to validate.
-      operationId: KycMatch
+      operationId: kycMatch
 
       security:
         - openId:
