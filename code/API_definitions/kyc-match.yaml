@@ -105,7 +105,7 @@ paths:
           - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
           - **false**: the attribute provided does not match with the one in the Operator systems.
           - **not_available**: the attribute is not available to validate.
-      operationId: KYC_Match
+      operationId: KycMatch
 
       security:
         - openId:
