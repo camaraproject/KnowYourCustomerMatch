@@ -71,23 +71,27 @@ Changes documented below are compared to version 0.4.0.
 
 ### Breaking changes
 
-* N/A
+* Replace 403 INVALID_TOKEN_CONTEXT with 422 UNNECESSARY_IDENTIFIER by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/84
 
 ### Added
 
-* N/A
+* Add bankaccountnumber as an attribute to KYC Match by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/73
 
 ### Changed
 
-* N/A
+* Alignment with Guidelines and linting rules for OWASP API Security  by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/72
+* Commonalities 8.0.0 alignment and fix validation warnings by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/81
+* Replace 403 INVALID_TOKEN_CONTEXT with 422 UNNECESSARY_IDENTIFIER by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/84
+* Another update to fix validation warnings by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/83
 
 ### Fixed
 
-* N/A
+* Correction of test definitions  by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/58
 
 ### Removed
 
-* N/A
+* Remove idDocument related errors by @fernandopradocabrillo in https://github.com/camaraproject/KnowYourCustomerMatch/pull/54
+* Remove Flows Image from yaml file by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/64
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r1.2...r2.1
 
