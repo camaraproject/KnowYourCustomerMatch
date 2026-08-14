@@ -72,6 +72,8 @@ Changes documented below are compared to version 0.4.0.
 ### Breaking changes
 
 * Replace 403 INVALID_TOKEN_CONTEXT with 422 UNNECESSARY_IDENTIFIER by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/84
+* Previously, when the API consumer provided both a 3-legged access token and an explicit 'phoneNumber', the API would return '403 INVALID_TOKEN_CONTEXT' if they did not match, but proceed as normal if they did match.
+* Now, the API will always return '422 UNNECESSARY_IDENTIFIER' if both a 3-legged access token and an explicit 'phoneNumber' are provided. This will be a breaking change for those API consumers who provide a matching 3-legged access token and 'phoneNumber' - their API calls would have succeeded before, but now they will fail.
 
 ### Added
 
