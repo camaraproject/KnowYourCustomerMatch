@@ -259,7 +259,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
 
   @KYC_Match_10_invalid_param_combination
   Scenario: Error 400 when body does not contain any fields other than phone number
-    Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
+    Given a valid testing phone number supported by the service provided in the request body
     And the request body property "$.phoneNumber" set to a valid formatted value
     And the request body contains only the property "$.phoneNumber"
     When the request "KYC_Match" is sent
@@ -320,4 +320,15 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 422
     And the response property "$.status" is 422
     And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
+    And the response property "$.message" contains a user friendly text
+
+  # Only with a 3-legged access token
+  @checkTenure_C02.06_unnecessary_phone_number
+  Scenario: Phone number should not be included when it can be deducted from the access token
+    Given the header "Authorization" is set to a valid access token identifying a phone number
+    And  the request body property "$.phoneNumber" is set to a valid phone number
+    When the HTTP "POST" request is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
     And the response property "$.message" contains a user friendly text
