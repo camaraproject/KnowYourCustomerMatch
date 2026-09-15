@@ -268,17 +268,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 400
 
-  @KYC_Match_11_phone_number_provided_does_not_match_the_token
-  Scenario: Error when the phone number provided in the request body does not match the phone number associated with the access token
-    # To test this, a token has to be obtained for a different phoneNumber
-    Given the request body property "$.phoneNumber" is set to a valid testing phone number
-    And the header "Authorization" is set to a valid access token emitted for a different phone number
-    When the request "KYC_Match" is sent
-    Then the response status code is 403
-    And the response property "$.code" is "INVALID_TOKEN_CONTEXT"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 403
-
   # Error scenarios for management of input parameter phoneNumber
 
   @KYC_Match_C02.01_phone_number_not_schema_compliant
@@ -299,6 +288,17 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 404
     And the response property "$.status" is 404
     And the response property "$.code" is "IDENTIFIER_NOT_FOUND"
+    And the response property "$.message" contains a user friendly text
+
+  # Only with a 3-legged access token
+  @KYC_Match_C02.03_unnecessary_phone_number
+  Scenario: Phone number should not be included when it can be deducted from the access token
+    Given the header "Authorization" is set to a valid access token identifying a phone number
+    And  the request body property "$.phoneNumber" is set to a valid phone number
+    When the HTTP "POST" request is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
     And the response property "$.message" contains a user friendly text
 
   @KYC_Match_C02.04_missing_phone_number
@@ -322,13 +322,14 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
     And the response property "$.message" contains a user friendly text
 
-  # Only with a 3-legged access token
-  @checkTenure_C02.06_unnecessary_phone_number
-  Scenario: Phone number should not be included when it can be deducted from the access token
-    Given the header "Authorization" is set to a valid access token identifying a phone number
-    And  the request body property "$.phoneNumber" is set to a valid phone number
-    When the HTTP "POST" request is sent
-    Then the response status code is 422
-    And the response property "$.status" is 422
-    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
+  @KYC_Match_429.01_Too_Many_Requests
+  #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
+  Scenario: Request is rejected due to threshold policy
+    Given a valid request for "{operationId}"
+    And the header "Authorization" is set to a valid access token
+    And the threshold of requests has been reached
+    When the request "{operationId}" is sent
+    Then the response status code is 429
+    And the response property "$.status" is 429
+    And the response property "$.code" is "TOO_MANY_REQUESTS"
     And the response property "$.message" contains a user friendly text
