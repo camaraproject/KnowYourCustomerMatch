@@ -292,7 +292,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
 
   # Only with a 3-legged access token
   @KYC_Match_C02.03_unnecessary_phone_number
-  Scenario: Phone number should not be included when it can be deducted from the access token
+  Scenario: Phone number not to be included when it can be deduced from the access token
     Given the header "Authorization" is set to a valid access token identifying a phone number
     And  the request body property "$.phoneNumber" is set to a valid phone number
     When the HTTP "POST" request is sent
