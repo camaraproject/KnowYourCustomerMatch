@@ -328,7 +328,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Given a valid request for "kycMatch"
     And the header "Authorization" is set to a valid access token
     And the threshold of requests has been reached
-    When the request "{operationId}" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 429
     And the response property "$.status" is 429
     And the response property "$.code" is "TOO_MANY_REQUESTS"
