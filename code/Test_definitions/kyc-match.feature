@@ -325,7 +325,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   @KYC_Match_429.01_Too_Many_Requests
   #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
   Scenario: Request is rejected due to threshold policy
-    Given a valid request for "{operationId}"
+    Given a valid request for "kycMatch"
     And the header "Authorization" is set to a valid access token
     And the threshold of requests has been reached
     When the request "{operationId}" is sent
