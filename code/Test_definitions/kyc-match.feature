@@ -255,11 +255,24 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
+  # Generic 403 errors
+
+  @KYC_Match_403.1_missing_access_token_scope
+  Scenario: Missing access token scope
+    Given the header "Authorization" is set to an access token that does not include scope "kyc-age-verification:verify"
+    When the request "KYC_Match" is sent
+    Then the response status code is 403
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 403
+    And the response property "$.code" is "PERMISSION_DENIED"
+    And the response property "$.message" contains a user friendly text
+
   # API Specific Errors
 
   @KYC_Match_10_invalid_param_combination
   Scenario: Error 400 when body does not contain any fields other than phone number
-    Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
+    Given a valid testing phone number supported by the service provided in the request body
     And the request body property "$.phoneNumber" set to a valid formatted value
     And the request body contains only the property "$.phoneNumber"
     When the request "KYC_Match" is sent
@@ -267,17 +280,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
     And the response property "$.message" contains a user friendly text
     And the response property "$.status" is 400
-
-  @KYC_Match_11_phone_number_provided_does_not_match_the_token
-  Scenario: Error when the phone number provided in the request body does not match the phone number associated with the access token
-    # To test this, a token has to be obtained for a different phoneNumber
-    Given the request body property "$.phoneNumber" is set to a valid testing phone number
-    And the header "Authorization" is set to a valid access token emitted for a different phone number
-    When the request "KYC_Match" is sent
-    Then the response status code is 403
-    And the response property "$.code" is "INVALID_TOKEN_CONTEXT"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 403
 
   # Error scenarios for management of input parameter phoneNumber
 
@@ -301,6 +303,17 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "IDENTIFIER_NOT_FOUND"
     And the response property "$.message" contains a user friendly text
 
+  # Only with a 3-legged access token
+  @KYC_Match_C02.03_unnecessary_phone_number
+  Scenario: Phone number not to be included when it can be deduced from the access token
+    Given the header "Authorization" is set to a valid access token identifying a phone number
+    And  the request body property "$.phoneNumber" is set to a valid phone number
+    When the HTTP "POST" request is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
+    And the response property "$.message" contains a user friendly text
+
   @KYC_Match_C02.04_missing_phone_number
   Scenario: Phone number not included and cannot be deducted from the access token
     Given the header "Authorization" is set to a valid access token which does not identify a single phone number
@@ -320,4 +333,16 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 422
     And the response property "$.status" is 422
     And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
+    And the response property "$.message" contains a user friendly text
+
+  @KYC_Match_429.01_Too_Many_Requests
+  #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
+  Scenario: Request is rejected due to threshold policy
+    Given a valid request for "kycMatch"
+    And the header "Authorization" is set to a valid access token
+    And the threshold of requests has been reached
+    When the request "kycMatch" is sent
+    Then the response status code is 429
+    And the response property "$.status" is 429
+    And the response property "$.code" is "TOO_MANY_REQUESTS"
     And the response property "$.message" contains a user friendly text
