@@ -103,7 +103,8 @@ paths:
       description: |-
         Verify matching of a number of attributes related to a customer identity against the verified data bound to their phone number in the Operator systems. Regardless of whether the `phoneNumber` is explicitly stated in the request body, at least one of the other fields must be provided, otherwise a `HTTP 400 - KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` error will be returned.
 
-        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:k          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
+        The API will return the result of the matching process for each requested attribute. This means that the response will **only** contain the attributes for which validation has been requested. Possible values are:
+          - **true**: the attribute provided matches with the one in the Operator systems, which is equal to a `match_score` of 100.
           - **false**: the attribute provided does not match with the one in the Operator systems.
           - **not_available**: the attribute is not available to validate.
       operationId: kycMatch
@@ -123,7 +124,7 @@ paths:
             schema:
               $ref: '#/components/schemas/KycMatchRequestBody'
             examples:
-              Two-Legged and Three-leg Access Token Example:
+              Two-Legged Example:
                 value:
                   phoneNumber: '+34629255833'
                   idDocument: 66666666q
@@ -151,7 +152,7 @@ paths:
                   cityOfBirth: Madrid
                   countryOfBirth: ES
                   nationality: ES
-              Three-Legged Without Phone Number Example:
+              Three-Legged Example:
                 value:
                   idDocument: 66666666q
                   idDocumentType: passport
@@ -233,6 +234,8 @@ paths:
           $ref: '#/components/responses/Generic404'
         "422":
           $ref: '#/components/responses/Generic422'
+        "429":
+          $ref: '#/components/responses/Generic429'
 
 components:
   securitySchemes:
@@ -709,3 +712,36 @@ components:
                 status: 422
                 code: UNNECESSARY_IDENTIFIER
                 message: The phone number is already identified by the access token.
+
+    Generic429:
+      description: Too Many Requests
+      headers:
+        x-correlator:
+          $ref: "../common/CAMARA_common.yaml#/components/headers/x-correlator"
+      content:
+        application/json:
+          schema:
+            allOf:
+              - $ref: "../common/CAMARA_common.yaml#/components/schemas/ErrorInfo"
+              - type: object
+                properties:
+                  status:
+                    enum:
+                      - 429
+                  code:
+                    enum:
+                      - QUOTA_EXCEEDED
+                      - TOO_MANY_REQUESTS
+          examples:
+            GENERIC_429_QUOTA_EXCEEDED:
+              description: Request is rejected due to exceeding a business quota limit
+              value:
+                status: 429
+                code: QUOTA_EXCEEDED
+                message: Out of resource quota.
+            GENERIC_429_TOO_MANY_REQUESTS:
+              description: Access to the API has been temporarily blocked due to rate or spike arrest limits being reached
+              value:
+                status: 429
+                code: TOO_MANY_REQUESTS
+                message: Rate limit reached.
