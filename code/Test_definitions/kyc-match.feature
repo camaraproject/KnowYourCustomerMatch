@@ -255,6 +255,19 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
+  # Generic 403 errors
+
+  @KYC_Match_403.1_missing_access_token_scope
+  Scenario: Missing access token scope
+    Given the header "Authorization" is set to an access token that does not include scope "kyc-age-verification:verify"
+    When the request "KYC_Match" is sent
+    Then the response status code is 403
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 403
+    And the response property "$.code" is "PERMISSION_DENIED"
+    And the response property "$.message" contains a user friendly text
+
   # API Specific Errors
 
   @KYC_Match_10_invalid_param_combination
