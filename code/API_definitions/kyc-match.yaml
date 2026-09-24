@@ -124,7 +124,7 @@ paths:
             schema:
               $ref: '#/components/schemas/KycMatchRequestBody'
             examples:
-              Two-Legged Example:
+              Example when using a Two-legged access token:
                 value:
                   phoneNumber: '+34629255833'
                   idDocument: 66666666q
@@ -152,7 +152,7 @@ paths:
                   cityOfBirth: Madrid
                   countryOfBirth: ES
                   nationality: ES
-              Three-Legged Example:
+              Example when using a Three-legged access token:
                 value:
                   idDocument: 66666666q
                   idDocumentType: passport
