@@ -15,27 +15,27 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the resource "/kyc-match/vwip/match"
     And the header "Content-Type" is set to "application/json"
     And the header "Authorization" is set to a valid access token
-    And the header "x-correlator" complies with the schema at "#/components/schemas/XCorrelator"
+    And the header "x-correlator" complies with the schema at "../common/CAMARA_common.yaml#/components/headers/x-correlator"
     And the request body is set by default to a request body compliant with the schema
 
   # Happy path scenarios
 
-  @KYC_Match_1_success_request_response
+  @kyc-match_01_success_request_response
   Scenario: Validate successful response
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
     And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
 
-  @KYC_Match_2_success_specific_property
+  @kyc-match_02_success_specific_property
   Scenario Outline: Validate success response when providing specific property
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination
     And the request body property "<request_property_path>" is set to a valid value that complies with the OAS schema at "/components/schemas/KYC_MatchRequestBody"
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
@@ -69,12 +69,12 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @KYC_Match_3_success_specific_property_score
+  @kyc-match_03_success_specific_property_score
   # Note: This test scenario is optional, as implementation of 'score' feature is optional to network operators/ API providers.
   Scenario Outline: Validate success response when providing specific property with false value
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does not match the value stored in the MNO system
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
@@ -99,11 +99,11 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
       | $.email                   | $.emailMatch                  | $.emailMatchScore             |
       | $.cityOfBirth             | $.cityOfBirthMatch            | $.cityOfBirthMatchScore       |
 
-  @KYC_Match_4_perfect_match_no_scores_returned
+  @kyc-match_04_perfect_match_no_scores_returned
   Scenario Outline: Validate success response when provided property value is a perfect match
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does perfectly match the value stored in the MNO system
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
@@ -137,12 +137,12 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @KYC_Match_5_success_specific_property_false
+  @kyc-match_05_success_specific_property_false
   # This scenario test the false result as scenario KYC_Match_3_success_specific_property_score but without the score properties
   Scenario Outline: Validate success response when providing specific property with false value and without the score properties
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does not match the value stored in the MNO system
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
@@ -174,7 +174,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @KYC_Match_6_success_multiple_optional_parameter_combinations
+  @kyc-match_06_success_multiple_optional_parameter_combinations
   Scenario: Validate success response when providing different optional parameter combinations
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body property "$.idDocument" is set to a valid identity document
@@ -198,88 +198,115 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the request body property "$.gender" is set to a valid gender value that belongs to the enumeration ("MALE", "FEMALE", "OTHER")
     And the request body property "$.nationality" is set to the country for the nationality and complies with the ISO 3166-1 alpha-2 format
     And the given request body is populated with any random combination of afore mention optional parameters
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
     And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
 
-  @KYC_Match_7_success_id_document_required
+  @kyc-match_07_success_id_document_required
   # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
   Scenario: Validate success when idDocument is required to perform the match validation for any other property
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body property "$.idDocument" is set to a valid identity document associated with the identified phoneNumber
     And the request body is set to a valid parameter combination
-    When the request "KYC_Match" is sent
+    When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
     And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
 
-  # Generic 401 errors
-
-  @KYC_Match_401.1_expired_access_token
-  Scenario: Error response for expired access token
-    Given the header "Authorization" is set to an expired access token
-    When the request "KYC_Match" is sent
-    Then the response status code is 401
-    And the response property "$.code" is "UNAUTHENTICATED"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 401
-
-  @KYC_Match_401.2_invalid_access_token
-  Scenario: Error response for invalid access token
-    Given the header "Authorization" is set to an invalid access token
-    When the request "KYC_Match" is sent
-    Then the response status code is 401
-    And the response property "$.code" is "UNAUTHENTICATED"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 401
-
-  @KYC_Match_401.3_no_header_authorization
-  Scenario: Error response for no header "Authorization"
-    Given the header "Authorization" is not sent
-    When the request "KYC_Match" is sent
-    Then the response status code is 401
-    And the response property "$.code" is "UNAUTHENTICATED"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 401
-
   # Generic 400 errors
 
-  @KYC_Match_400.1_no_request_body
+  @kyc-match_kycMatch_400.01_schema_not_compliant
+  Scenario: Invalid Argument. Generic Syntax Exception
+    Given the request body is included but is not compliant with the schema at "#/components/schemas/KycMatchRequestBody"
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 400
+    And the response property "$.code" is "INVALID_ARGUMENT"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_400.02_no_request_body
   Scenario: Missing request body
     Given the request body is not included
-    When the HTTP "POST" request is sent
+    When the request "kycMatch" is sent
     Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 400
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-  @KYC_Match_400.2_empty_request_body
+  @kyc-match_kycMatch_400.03_empty_request_body
+  # 3-legged scenario only. It happens when request body has at least one required property
+  # NOTE: Recommended value for "$.message" (NOT NORMATIVE) is "Missing mandatory parameter(s)"
   Scenario: Empty object as request body
-    Given the request body is set to "{}"
-    When the HTTP "POST" request is sent
+    Given the request body is set to {}
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 400
+    And the response property "$.code" is "INVALID_ARGUMENT"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_400.06_invalid_x-correlator
+  Scenario: Invalid x-correlator header
+    Given the header "x-correlator" does not comply with the schema at "#/components/schemas/XCorrelator"
+    When the request "kycMatch" is sent
     Then the response status code is 400
     And the response property "$.status" is 400
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-  @KYC_Match_400.3_invalid_argument
-  Scenario: Invalid Argument. Generic Syntax Exception
-    Given the request body is set to any value which is not compliant with the OAS schema at "/components/schemas/VerifyRequestBody"
-    When the HTTP "POST" request is sent
-    Then the response status code is 400
-    And the response property "$.status" is 400
-    And the response property "$.code" is "INVALID_ARGUMENT"
+  # Service Error scenarios
+
+  ## Authentication/Authorization errors
+
+    # Generic 401 errors
+
+  @kyc-match_kycMatch_401.01_no_authorization_header
+  Scenario: Error response for no header "Authorization"
+    Given the header "Authorization" is not sent
+    When the request "kycMatch" is sent
+    Then the response status code is 401
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 401
+    And the response property "$.code" is "UNAUTHENTICATED"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_401.02_expired_access_token
+  Scenario: Error response for expired access token
+    Given the header "Authorization" is set to an expired access token
+    When the request "kycMatch" is sent
+    Then the response status code is 401
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 401
+    And the response property "$.code" is "UNAUTHENTICATED"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_401.03_invalid_access_token
+  Scenario: Error response for invalid access token
+    Given the header "Authorization" is set to an invalid access token
+    When the request "kycMatch" is sent
+    Then the response status code is 401
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 401
+    And the response property "$.code" is "UNAUTHENTICATED"
     And the response property "$.message" contains a user friendly text
 
   # Generic 403 errors
 
-  @KYC_Match_403.1_missing_access_token_scope
+  @kyc-match_kycMatch_403.01_missing_access_token_scope
   Scenario: Missing access token scope
-    Given the header "Authorization" is set to an access token that does not include scope "kyc-age-verification:verify"
-    When the request "KYC_Match" is sent
+    Given the header "Authorization" is set to an access token that does not include scope "kyc-match:match"
+    When the request "kycMatch" is sent
     Then the response status code is 403
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
@@ -287,75 +314,22 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "PERMISSION_DENIED"
     And the response property "$.message" contains a user friendly text
 
-  # API Specific Errors
-
-  @KYC_Match_10_invalid_param_combination
-  Scenario: Error 400 when body does not contain any fields other than phone number
-    Given a valid testing phone number supported by the service provided in the request body
-    And the request body property "$.phoneNumber" set to a valid formatted value
-    And the request body contains only the property "$.phoneNumber"
-    When the request "KYC_Match" is sent
-    Then the response status code is 400
-    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 400
-
-  # Error scenarios for management of input parameter phoneNumber
-
-  @KYC_Match_C02.01_phone_number_not_schema_compliant
-  Scenario: Phone number value does not comply with the schema
-    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
-    And the request body property "$.phoneNumber" does not comply with the OAS schema at "/components/schemas/PhoneNumber"
-    When the HTTP "POST" request is sent
-    Then the response status code is 400
-    And the response property "$.status" is 400
-    And the response property "$.code" is "INVALID_ARGUMENT"
+  @kyc-match_kycMatch_403.02_api_client_token_mismatch
+  Scenario: "/match" not created by the API client given in the access token
+    # To test this, a token has to be obtained for a different client
+    Given the header "Authorization" is set to a valid access token emitted to an API client which did not have rights to access/manage the "/match"
+    When the request "kycMatch" is sent
+    Then the response status code is 403
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 403
+    And the response property "$.code" is "PERMISSION_DENIED"
     And the response property "$.message" contains a user friendly text
 
-  @KYC_Match_C02.02_phone_number_not_found
-  Scenario: Phone number not found
-    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
-    And the request body property "$.phoneNumber" is compliant with the schema but does not identify a valid phone number
-    When the HTTP "POST" request is sent
-    Then the response status code is 404
-    And the response property "$.status" is 404
-    And the response property "$.code" is "IDENTIFIER_NOT_FOUND"
-    And the response property "$.message" contains a user friendly text
+  # Generic 429 scenarios
 
-  # Only with a 3-legged access token
-  @KYC_Match_C02.03_unnecessary_phone_number
-  Scenario: Phone number not to be included when it can be deduced from the access token
-    Given the header "Authorization" is set to a valid access token identifying a phone number
-    And  the request body property "$.phoneNumber" is set to a valid phone number
-    When the HTTP "POST" request is sent
-    Then the response status code is 422
-    And the response property "$.status" is 422
-    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
-    And the response property "$.message" contains a user friendly text
-
-  @KYC_Match_C02.04_missing_phone_number
-  Scenario: Phone number not included and cannot be deducted from the access token
-    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
-    And the request body property "$.phoneNumber" is not included
-    When the HTTP "POST" request is sent
-    Then the response status code is 422
-    And the response property "$.status" is 422
-    And the response property "$.code" is "MISSING_IDENTIFIER"
-    And the response property "$.message" contains a user friendly text
-
-  # When the service is only offered to certain type of subscriptions, e.g. IoT, , B2C, etc
-  @KYC_Match_C02.05_phone_number_not_supported
-  Scenario: Service not available for the phone number
-    Given that the service is not available for all phone numbers commercialized by the operator
-    And a valid phone number, identified by the token or provided in the request body, for which the service is not applicable
-    When the HTTP "POST" request is sent
-    Then the response status code is 422
-    And the response property "$.status" is 422
-    And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
-    And the response property "$.message" contains a user friendly text
-
-  @KYC_Match_429.01_Too_Many_Requests
-  #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
+  @kyc-match_kycMatch_429.01_Too_Many_Requests
+  #To test this scenario environment has to be configured to reject requests reaching the threshold limit set.
   Scenario: Request is rejected due to threshold policy
     Given a valid request for "kycMatch"
     And the header "Authorization" is set to a valid access token
@@ -364,4 +338,74 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 429
     And the response property "$.status" is 429
     And the response property "$.code" is "TOO_MANY_REQUESTS"
+    And the response property "$.message" contains a user friendly text
+
+  # API Specific Errors
+
+  @kyc-match_kycMatch_10_invalid_param_combination
+  Scenario: Error 400 when body does not contain any fields other than phone number
+    Given a valid testing phone number supported by the service provided in the request body
+    And the request body property "$.phoneNumber" set to a valid formatted value
+    And the request body contains only the property "$.phoneNumber"
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
+    And the response property "$.message" contains a user friendly text
+    And the response property "$.status" is 400
+
+  # Error scenarios for management of input parameter phoneNumber
+
+  @kyc-match_kycMatch_C02.01_phone_number_not_schema_compliant
+  Scenario: Phone number value does not comply with the schema
+    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
+    And the request body property "$.phoneNumber" does not comply with the OAS schema at "#/components/schemas/PhoneNumber"
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response property "$.status" is 400
+    And the response property "$.code" is "INVALID_ARGUMENT"
+    And the response property "$.message" contains a user friendly text
+
+# Typically with a 2-legged access token
+  @kyc-match_kycMatch_C02.02_phone_number_not_found
+  Scenario: Phone number not found
+    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
+    And the request body property "$.phoneNumber" is compliant with the schema but does not identify a valid phone number
+    When the request "kycMatch" is sent
+    Then the response status code is 404
+    And the response property "$.status" is 404
+    And the response property "$.code" is "IDENTIFIER_NOT_FOUND"
+    And the response property "$.message" contains a user friendly text
+
+# Only with a 3-legged access token
+  @kyc-match_kycMatch_C02.03_unnecessary_phone_number
+  Scenario: Phone number not to be included when it can be deduced from the access token
+    Given the header "Authorization" is set to a valid access token identifying a phone number
+    And  the request body property "$.phoneNumber" is set to a valid phone number
+    When the request "kycMatch" is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_C02.04_missing_phone_number
+  Scenario: Phone number not included and cannot be deduced from the access token
+    Given the header "Authorization" is set to a valid access token which does not identify a single phone number
+    And the request body property "$.phoneNumber" is not included
+    When the request "kycMatch" is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "MISSING_IDENTIFIER"
+    And the response property "$.message" contains a user friendly text
+
+    # When the service is only offered to certain type of subscriptions, e.g. IoT, , B2C, etc
+  @kyc-match_kycMatch_C02.05_phone_number_not_supported
+  Scenario: Service not available for the phone number
+    Given that the service is not available for all phone numbers commercialized by the operator
+    And a valid phone number, identified by the token or provided in the request body, for which the service is not applicable
+    When the request "kycMatch" is sent
+    Then the response status code is 422
+    And the response property "$.status" is 422
+    And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
     And the response property "$.message" contains a user friendly text
