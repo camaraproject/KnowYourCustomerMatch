@@ -62,7 +62,8 @@ Changes documented below are compared to version 0.5.0-rc.1.
 
 ### Added
 
-* N/A
+* Documented the `429` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
+* Added tests for the error responses that were documented but not tested (`403 PERMISSION_DENIED` for a missing scope, `422 UNNECESSARY_IDENTIFIER` and `429 TOO_MANY_REQUESTS`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
 
 ### Changed
 
