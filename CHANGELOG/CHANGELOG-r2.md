@@ -79,7 +79,7 @@ Changes documented below are compared to version 0.5.0-rc.1.
 
 ### Removed
 
-* Removed `NOT_FOUND`from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r2.1...r2.2
 
