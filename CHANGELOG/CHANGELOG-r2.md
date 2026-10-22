@@ -62,16 +62,15 @@ Changes documented below are compared to version 0.5.0-rc.1.
 
 ### Added
 
-* Documented the `429` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 * Added tests for the error responses that were documented but not tested (`403 PERMISSION_DENIED` for a missing scope, `422 UNNECESSARY_IDENTIFIER` and `429 TOO_MANY_REQUESTS`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
+* Documented the `429` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 
 ### Changed
 
-* Updated the test scenarios of the API: removed the obsolete test for the removed error `403 INVALID_TOKEN_CONTEXT` and reviewed the scenarios for 2-legged and 3-legged access tokens by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
-* Updated the release plan to align the API with Commonalities r4.4, the release tag with r2.2 and the target API version with 1.0.0 by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/92
-* Reverted the test scenario `KYC_Match_6_success_multiple_optional_parameter_combinations` to its pre-Fall25 version, which lists each optional property explicitly and describes the test more clearly by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
+* Updated the test definitions: removed the obsolete scenario for `403 INVALID_TOKEN_CONTEXT` and reviewed the scenarios for 2-legged and 3-legged access tokens by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
 * Improved the API documentation: highlighted that the match score uses the Jaro-Winkler distance algorithm unless the Operator states otherwise, and renamed the request examples to "Example when using a Two-legged access token" and "Example when using a Three-legged access token" by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
-* Aligned the API definition and test definitions with Commonalities r4.4: error responses now use the shared Commonalities definitions (with a local `400` response that keeps the `KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` error), and test scenarios follow the new templates by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* Reverted test scenario `06` (multiple optional parameter combinations) to its earlier version, which lists each optional property explicitly by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
+* Aligned with Commonalities r4.4: error responses use the Commonalities response and example definitions (example messages reworded), with a local `400` response that keeps `KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION`, and test definitions follow the r4.4 templates (renamed scenario tags, operation `kycMatch`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 * Renamed the OpenAPI tag `Match` to `Check Subscriber Information`. The endpoint, request and response are unchanged by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
 
 ### Fixed
