@@ -71,7 +71,7 @@ Changes documented below are compared to version 0.5.0-rc.1.
 
 ### Fixed
 
-* Fixed a formatting typo in the `POST /match` description by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
+* Fixed a formatting typo in the `POST /match` description that broke the list of possible match values by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 
 ### Removed
 
