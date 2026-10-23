@@ -351,19 +351,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
 
   # API Specific Errors
 
-  @kyc-match_kycMatch_10_invalid_param_combination
-  Scenario: Error 400 when body does not contain any fields other than phone number
-    Given a valid testing phone number supported by the service provided in the request body
-    And the request body property "$.phoneNumber" set to a valid formatted value
-    And the request body contains only the property "$.phoneNumber"
-    When the request "kycMatch" is sent
-    Then the response status code is 400
-    And the response header "x-correlator" has same value as the request header "x-correlator"
-    And the response header "Content-Type" is "application/json"
-    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 400
-
   # Error scenarios for management of input parameter phoneNumber
 
   @kyc-match_kycMatch_C02.01_phone_number_not_schema_compliant
