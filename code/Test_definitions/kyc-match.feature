@@ -314,7 +314,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the response property "$.message" contains a user friendly text
 
   @kyc-match_kycMatch_403.02_api_client_token_mismatch
-  Scenario: Access token emitted to an API client not authorised to use "/match"
+  Scenario: "/match" not managed by the API client given in the access token
     # To test this, a token has to be obtained for a different client
     Given the header "Authorization" is set to a valid access token emitted to an API client which did not have rights to access/manage the "/match"
     When the request "kycMatch" is sent
