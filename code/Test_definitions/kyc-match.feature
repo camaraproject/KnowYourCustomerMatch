@@ -240,10 +240,20 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-  @kyc-match_kycMatch_400.03_empty_request_body
-  # The request body is a valid JSON object, but it contains no field other than the optional "phoneNumber"
-  Scenario: Empty object as request body
+  @kyc-match_kycMatch_400.03_invalid_param_combination_3_legged
+  Scenario: Invalid Param Combination in 3-legged scenario
     Given the request body is set to {}
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 400
+    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_400.04_invalid_param_combination_2_legged
+  Scenario: Invalid Param Combination in 2-legged scenario
+    Given the request body only contains the property "$.phoneNumber" with a valid value
     When the request "kycMatch" is sent
     Then the response status code is 400
     And the response header "x-correlator" has same value as the request header "x-correlator"
