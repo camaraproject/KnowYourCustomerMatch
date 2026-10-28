@@ -1,4 +1,4 @@
-Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
+Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
   # Input to be provided by the implementation to the tester
   #
   # Implementation indications:
@@ -10,7 +10,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
   #
   # References to OAS spec schemas refer to schemas specifies in kyc-match.yaml
 
-  Background: Common KYC_Match setup
+  Background: Common kycMatch setup
     Given an environment at "apiRoot"
     And the resource "/kyc-match/vwip/match"
     And the header "Content-Type" is set to "application/json"
@@ -28,18 +28,18 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
 
   @kyc-match_02_success_specific_property
   Scenario Outline: Validate success response when providing specific property
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination
-    And the request body property "<request_property_path>" is set to a valid value that complies with the OAS schema at "/components/schemas/KYC_MatchRequestBody"
+    And the request body property "<request_property_path>" is set to a valid value that complies with the OAS schema at "#/components/schemas/KycMatchRequestBody"
     When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
     And the response contains the property "<response_property_path>"
 
     Examples:
@@ -78,7 +78,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
     And the response property "<response_property_path>" is equal to "false"
     And the response property "<response_score_property_path>" is equal to an integer value between 0 and 99
 
@@ -107,7 +107,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
     And the response property "<response_property_path>" is equal to "true"
     And the correspondent score property, if exists, is not returned
 
@@ -138,7 +138,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
       | $.nationality             | $.nationalityMatch            |
 
   @kyc-match_05_success_specific_property_false
-  # This scenario test the false result as scenario KYC_Match_3_success_specific_property_score but without the score properties
+  # This scenario test the false result as scenario kyc-match_03_success_specific_property_score but without the score properties
   Scenario Outline: Validate success response when providing specific property with false value and without the score properties
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does not match the value stored in the MNO system
@@ -146,7 +146,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
     And the response property "<response_property_path>" is equal to "false"
     Examples:
       | request_property_path     | response_property_path        |
@@ -202,7 +202,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
 
   @kyc-match_07_success_id_document_required
   # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
@@ -214,7 +214,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "/components/schemas/KYC_MatchResponse"
+    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
 
   # Generic 400 errors
 
@@ -240,17 +240,26 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
 
-  @kyc-match_kycMatch_400.03_empty_request_body
-  # 3-legged scenario only. It happens when request body has at least one required property
-  # NOTE: Recommended value for "$.message" (NOT NORMATIVE) is "Missing mandatory parameter(s)"
-  Scenario: Empty object as request body
+  @kyc-match_kycMatch_400.03_invalid_param_combination_3_legged
+  Scenario: Invalid Param Combination in 3-legged scenario
     Given the request body is set to {}
     When the request "kycMatch" is sent
     Then the response status code is 400
     And the response header "x-correlator" has same value as the request header "x-correlator"
     And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 400
-    And the response property "$.code" is "INVALID_ARGUMENT"
+    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
+    And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_400.04_invalid_param_combination_2_legged
+  Scenario: Invalid Param Combination in 2-legged scenario
+    Given the request body only contains the property "$.phoneNumber" with a valid value
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
+    And the response property "$.status" is 400
+    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
     And the response property "$.message" contains a user friendly text
 
   @kyc-match_kycMatch_400.06_invalid_x-correlator
@@ -315,7 +324,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
 
   @kyc-match_kycMatch_403.02_api_client_token_mismatch
-  Scenario: "/match" not created by the API client given in the access token
+  Scenario: "/match" not managed by the API client given in the access token
     # To test this, a token has to be obtained for a different client
     Given the header "Authorization" is set to a valid access token emitted to an API client which did not have rights to access/manage the "/match"
     When the request "kycMatch" is sent
@@ -341,19 +350,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation KYC_Match
     And the response property "$.message" contains a user friendly text
 
   # API Specific Errors
-
-  @kyc-match_kycMatch_10_invalid_param_combination
-  Scenario: Error 400 when body does not contain any fields other than phone number
-    Given a valid testing phone number supported by the service provided in the request body
-    And the request body property "$.phoneNumber" set to a valid formatted value
-    And the request body contains only the property "$.phoneNumber"
-    When the request "kycMatch" is sent
-    Then the response status code is 400
-    And the response header "x-correlator" has same value as the request header "x-correlator"
-    And the response header "Content-Type" is "application/json"
-    And the response property "$.code" is "KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION"
-    And the response property "$.message" contains a user friendly text
-    And the response property "$.status" is 400
 
   # Error scenarios for management of input parameter phoneNumber
 
