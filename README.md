@@ -40,9 +40,9 @@ Incubating API Repository to evolve and maintain the definitions and documentati
 
 ### Upcoming Release Preview
 
-* Pre-release: [r2.1](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r2.1) (release candidate)
-  * **kyc-match 0.5.0-rc.1**
-  [[YAML]](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r2.1/code/API_definitions/kyc-match.yaml)  [[ReDoc]](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r2.1/code/API_definitions/kyc-match.yaml&nocors)  [[Swagger]](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r2.1/code/API_definitions/kyc-match.yaml)
+* Pre-release: [r2.2](https://github.com/camaraproject/KnowYourCustomerMatch/releases/tag/r2.2) (release candidate)
+  * **kyc-match 1.0.0-rc.1**
+  [[YAML]](https://github.com/camaraproject/KnowYourCustomerMatch/blob/r2.2/code/API_definitions/kyc-match.yaml)  [[ReDoc]](https://redocly.github.io/redoc/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r2.2/code/API_definitions/kyc-match.yaml&nocors)  [[Swagger]](https://camaraproject.github.io/swagger-ui/?url=https://raw.githubusercontent.com/camaraproject/KnowYourCustomerMatch/r2.2/code/API_definitions/kyc-match.yaml)
 
 
 _The above section is automatically synchronized by CAMARA project-administration._
