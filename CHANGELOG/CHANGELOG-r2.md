@@ -36,15 +36,11 @@ The API definition(s) are based on
 <summary>Candidate changes (auto-generated from merged PRs)</summary>
 
 ## What's Changed
-* Release Automation: Post-release sync (r2.1) by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/89
 * Update KYC match feature scenarios for clarity by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
-* Update release-plan to Commonalities r4.4 and align release tag to r2.2 by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/92
-* Sync common files from Commonalities r4.4 by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/93
 * Revert KYC_Match_6 test scenario to pre-Fall25 version by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
 * Fix documentation issues by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 * Commonalities r4.4 alignment by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 * Align kyc-match API tag for better clarity and consistency by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
-* chore: remove obsolete v0 validation caller workflows by @hdamker in https://github.com/camaraproject/KnowYourCustomerMatch/pull/99
 * Fix r2.2 review findings: test definition defects (#103) and P-027 blank lines (#105) by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 ## New Contributors
@@ -70,19 +66,24 @@ Changes documented below are compared to version 0.5.0-rc.1.
 
 ### Added
 
-* N/A
+* Added tests for the error responses that were documented but not tested (`403 PERMISSION_DENIED` for a missing scope, `422 UNNECESSARY_IDENTIFIER` and `429 TOO_MANY_REQUESTS`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
+* Documented the `429` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 
 ### Changed
 
-* N/A
+* Updated the test definitions: removed the obsolete scenario for `403 INVALID_TOKEN_CONTEXT` and reviewed the scenarios for 2-legged and 3-legged access tokens by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
+* Improved the API documentation: highlighted that the match score uses the Jaro-Winkler distance algorithm unless the Operator states otherwise, and renamed the request examples to "Example when using a Two-legged access token" and "Example when using a Three-legged access token" by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
+* Reverted test scenario `06` (multiple optional parameter combinations) to its earlier version, which lists each optional property explicitly by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
+* Aligned with Commonalities r4.4: error responses use the Commonalities response and example definitions (example messages reworded), with a local `400` response that keeps `KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION`, and test definitions follow the r4.4 templates (renamed scenario tags, operation `kycMatch`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* Renamed the OpenAPI tag `Match` to `Check Subscriber Information`. The endpoint, request and response are unchanged by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
 
 ### Fixed
 
-* N/A
+* Fixed a formatting typo in the `POST /match` description that broke the list of possible match values by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 
 ### Removed
 
-* N/A
+* Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r2.1...r2.2
 
