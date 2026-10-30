@@ -76,14 +76,21 @@ Changes documented below are compared to version 0.5.0-rc.1.
 * Reverted test scenario `06` (multiple optional parameter combinations) to its earlier version, which lists each optional property explicitly by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
 * Aligned with Commonalities r4.4: error responses use the Commonalities response and example definitions (example messages reworded), with a local `400` response that keeps `KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION`, and test definitions follow the r4.4 templates (renamed scenario tags, operation `kycMatch`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 * Renamed the OpenAPI tag `Match` to `Check Subscriber Information`. The endpoint, request and response are unchanged by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
+* Updated the test definitions as below by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106:
+  - Use `#/components/schemas/KycMatchResponse` and `#/components/schemas/KycMatchRequestBody`
+  - Use `kycMatch` in the `Feature` line, the `Background` title, and the comment of scenario `05`
+  - Replace scenario `400.03` with two scenarios aligned with the `POST /match` description (`400.03_invalid_param_combination_3-legged` and `400.04_invalid_param_combination_2_legged`)
+  - Retitle scenario `403.02` as `"/match"`
 
 ### Fixed
 
 * Fixed a formatting typo in the `POST /match` description that broke the list of possible match values by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
+* Fixed a formatting typo by adding a blank line directly after the `BEGIN` markers of the `authorization-and-authentication` and `request-body-strictness` info-description templates by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 ### Removed
 
 * Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* Removed `10_invalid_param_combination` from test definitions by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r2.1...r2.2
 
