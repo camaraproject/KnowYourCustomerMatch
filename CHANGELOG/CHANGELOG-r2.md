@@ -79,8 +79,8 @@ Changes documented below are compared to version 0.5.0-rc.1.
 * Updated the test definitions as below by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106:
   - Use `#/components/schemas/KycMatchResponse` and `#/components/schemas/KycMatchRequestBody`
   - Use `kycMatch` in the `Feature` line, the `Background` title, and the comment of scenario `05`
-  - Replace scenario `400.03` with two scenarios aligned with the `POST /match` description (`400.03_invalid_param_combination_3-legged` and `400.04_invalid_param_combination_2_legged`)
-  - Retitle scenario `403.02` as `"/match"`
+  - Replace scenarios `10_invalid_param_combination` and `400.03` with two scenarios aligned with the `POST /match` description (`400.03_invalid_param_combination_3_legged` and `400.04_invalid_param_combination_2_legged`)
+  - Retitle scenario `403.02` as `"/match" not managed by the API client given in the access token`
 
 ### Fixed
 
@@ -90,7 +90,6 @@ Changes documented below are compared to version 0.5.0-rc.1.
 ### Removed
 
 * Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
-* Removed `10_invalid_param_combination` from test definitions by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r2.1...r2.2
 
