@@ -2,7 +2,7 @@ repository:
   repository_name: KnowYourCustomerMatch
   release_tag: r2.2
   release_type: pre-release-rc
-  release_date: null
+  release_date: '2026-11-04T07:47:37Z'
   src_commit_sha: b8a8d602e9cbf57d8a6112e418f04609e0e2f3d6
 apis:
 - api_name: kyc-match
