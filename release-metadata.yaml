@@ -1,0 +1,13 @@
+repository:
+  repository_name: KnowYourCustomerMatch
+  release_tag: r2.3
+  release_type: public-release
+  release_date: null
+  src_commit_sha: 6b4bc8265c44fe88ab82ac8e2e56f19f1b2dc62d
+apis:
+- api_name: kyc-match
+  api_version: 1.0.0
+  api_title: Know Your Customer Match
+dependencies:
+  commonalities_release: r4.4 (0.9.0)
+  identity_consent_management_release: r4.2 (0.5.0)
