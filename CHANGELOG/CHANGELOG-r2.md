@@ -37,36 +37,22 @@ The API definition(s) are based on
 <summary>Candidate changes (auto-generated from merged PRs)</summary>
 
 ## What's Changed
-* Revert version to wip by @fernandopradocabrillo in https://github.com/camaraproject/KnowYourCustomerMatch/pull/55
-* [bulk] Sync Release Information section (2025-12-12-001) by @hdamker-bot in https://github.com/camaraproject/KnowYourCustomerMatch/pull/53
 * Remove idDocument related errors by @fernandopradocabrillo in https://github.com/camaraproject/KnowYourCustomerMatch/pull/54
 * Correction of test definitions  by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/58
-* [bulk] Add release-plan.yaml (2026-02-23-001) by @hdamker-bot in https://github.com/camaraproject/KnowYourCustomerMatch/pull/61
-* fix: reset server URL to vwip on main (fixes #65) by @hdamker in https://github.com/camaraproject/KnowYourCustomerMatch/pull/66
-* [bulk] Enable release automation and validation by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/69
 * Remove Flows Image from yaml file by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/64
-* prepare kyc-match release plan for rc by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/75
-* Sync common files from Commonalities r4.3 by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/78
 * Add bankaccountnumber as an attribute to KYC Match by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/73
 * Alignment with Guidelines and linting rules for OWASP API Security  by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/72
 * Commonalities 8.0.0 alignment and fix validation warnings by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/81
 * Replace 403 INVALID_TOKEN_CONTEXT with 422 UNNECESSARY_IDENTIFIER by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/84
 * Another update to fix validation warnings by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/83
-* Release Automation: Post-release sync (r2.1) by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/89
 * Update KYC match feature scenarios for clarity by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/90
-* Update release-plan to Commonalities r4.4 and align release tag to r2.2 by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/92
-* Sync common files from Commonalities r4.4 by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/93
 * Revert KYC_Match_6 test scenario to pre-Fall25 version by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95
 * Fix documentation issues by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 * Commonalities r4.4 alignment by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 * Align kyc-match API tag for better clarity and consistency by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
-* chore: remove obsolete v0 validation caller workflows by @hdamker in https://github.com/camaraproject/KnowYourCustomerMatch/pull/99
 * Fix r2.2 review findings: test definition defects (#103) and P-027 blank lines (#105) by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
-* Release Automation: Post-release sync (r2.2) by @camara-release-automation[bot] in https://github.com/camaraproject/KnowYourCustomerMatch/pull/110
-* Update release-plan for KnowYourCustomerMatch (r2.3 Sync26 public release) by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/111
 
 ## New Contributors
-* @hdamker made their first contribution in https://github.com/camaraproject/KnowYourCustomerMatch/pull/66
 * @albertoramosmonagas made their first contribution in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 </details>
