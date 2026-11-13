@@ -83,7 +83,16 @@ Changes documented below are compared to version 0.4.0.
 
 ### Changed
 
-* N/A
+* Replaced `403 INVALID_TOKEN_CONTEXT` with `422 UNNECESSARY_IDENTIFIER`: with a 3-legged access token, `phoneNumber` must not be provided (see Breaking changes) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/84
+* Aligned with Commonalities r4.4 (0.9.0) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/72, https://github.com/camaraproject/KnowYourCustomerMatch/pull/81, https://github.com/camaraproject/KnowYourCustomerMatch/pull/83, https://github.com/camaraproject/KnowYourCustomerMatch/pull/90 and https://github.com/camaraproject/KnowYourCustomerMatch/pull/97:
+  * Error responses use the Commonalities response and example definitions (example messages reworded), with a local `400` response that keeps `KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION`
+  * Added the ISO 3166-1 alpha-2 pattern `^[A-Za-z]{2}$` to `country`, `countryOfBirth` and `nationality` (see Breaking changes)
+  * Added `maxLength` and `format` constraints to request and response properties, in line with the formats already documented
+  * Documented the request body strictness rule: requests containing properties not declared in the specification are rejected with `400 INVALID_ARGUMENT`
+  * Aligned the test definitions with the testing guidelines (renamed scenario tags, operation `kycMatch`, new 400, 403, 422 and 429 scenarios)
+* Renamed the `operationId` from `KYC_Match` to `kycMatch`, the schemas `KYC_MatchRequestBody` and `KYC_MatchResponse` to `KycMatchRequestBody` and `KycMatchResponse`, and the OpenAPI tag `Match` to `Check Subscriber Information` (no change to paths, methods or payloads) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/83 and @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
+* Improved the API documentation: highlighted that the match score uses the Jaro-Winkler distance algorithm unless the Operator states otherwise, and renamed the request examples to "Example when using a Two-legged access token" and "Example when using a Three-legged access token" by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
+* Updated the test definitions: scenario `06` lists each optional property explicitly, and the invalid parameter combination is tested in one scenario for 3-legged and one for 2-legged access tokens (`400.03`, `400.04`, replacing scenario `10`) by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95 and @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 ### Fixed
 
