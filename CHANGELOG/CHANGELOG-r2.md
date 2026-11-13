@@ -96,7 +96,8 @@ Changes documented below are compared to version 0.4.0.
 
 ### Fixed
 
-* N/A
+* Corrected test scenario `05` (false match without score) to send a value that does not match the stored value by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/58
+* Corrected the expected error for an empty request body `{}` to `400 KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION`, as stated in the `POST /match` description (was `400 INVALID_ARGUMENT`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97 and @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 
 ### Removed
 
