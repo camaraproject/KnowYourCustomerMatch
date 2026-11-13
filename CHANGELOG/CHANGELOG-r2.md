@@ -78,7 +78,8 @@ Changes documented below are compared to version 0.4.0.
 
 ### Added
 
-* N/A
+* Added the optional request property `bankAccountNumber` (format `PREFIX:VALUE`, for example `IBAN:NL59ABNA0123456789`) and the response property `bankAccountNumberMatch` by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/73
+* Documented the `429 TOO_MANY_REQUESTS` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91 and https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 
 ### Changed
 
