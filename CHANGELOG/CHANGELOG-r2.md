@@ -101,7 +101,8 @@ Changes documented below are compared to version 0.4.0.
 
 ### Removed
 
-* N/A
+* Removed the additional `idDocument` validation that Operators could require before the match check, together with the error codes `403 KNOW_YOUR_CUSTOMER.ID_DOCUMENT_REQUIRED` and `403 KNOW_YOUR_CUSTOMER.ID_DOCUMENT_MISMATCH` and their test scenarios by @fernandopradocabrillo in https://github.com/camaraproject/KnowYourCustomerMatch/pull/54
+* Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r1.2...r2.3
 
