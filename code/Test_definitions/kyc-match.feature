@@ -3,7 +3,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
   #
   # Implementation indications:
   # * apiRoot: API root of the server URL
-  # * Whether or not the idDocument request body property is mandatory.
   #
   # Testing assets:
   # * A mobile line identified by its phone number "phoneNumber"
@@ -20,7 +19,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
 
   # Happy path scenarios
 
-  @kyc-match_01_success_request_response
+  @kyc-match_kycMatch_01_success_request_response
   Scenario: Validate successful response
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination
@@ -30,7 +29,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the response header "Content-Type" is "application/json"
     And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
 
-  @kyc-match_02_success_specific_property
+  @kyc-match_kycMatch_02_success_specific_property
   Scenario Outline: Validate success response when providing specific property
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination
@@ -47,6 +46,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.idDocument              | $.idDocumentMatch             |
       | $.idDocumentType          | $.idDocumentTypeMatch         |
       | $.idDocumentExpiryDate    | $.idDocumentExpiryDateMatch   |
+      | $.bankAccountNumber       | $.bankAccountNumberMatch      |
       | $.name                    | $.nameMatch                   |
       | $.givenName               | $.givenNameMatch              |
       | $.familyName              | $.familyNameMatch             |
@@ -69,7 +69,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @kyc-match_03_success_specific_property_score
+  @kyc-match_kycMatch_03_success_specific_property_score
   # Note: This test scenario is optional, as implementation of 'score' feature is optional to network operators/ API providers.
   Scenario Outline: Validate success response when providing specific property with false value
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
@@ -99,7 +99,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.email                   | $.emailMatch                  | $.emailMatchScore             |
       | $.cityOfBirth             | $.cityOfBirthMatch            | $.cityOfBirthMatchScore       |
 
-  @kyc-match_04_perfect_match_no_scores_returned
+  @kyc-match_kycMatch_04_perfect_match_no_scores_returned
   Scenario Outline: Validate success response when provided property value is a perfect match
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does perfectly match the value stored in the MNO system
@@ -116,6 +116,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.idDocument              | $.idDocumentMatch             |
       | $.idDocumentType          | $.idDocumentTypeMatch         |
       | $.idDocumentExpiryDate    | $.idDocumentExpiryDateMatch   |
+      | $.bankAccountNumber       | $.bankAccountNumberMatch      |
       | $.name                    | $.nameMatch                   |
       | $.givenName               | $.givenNameMatch              |
       | $.familyName              | $.familyNameMatch             |
@@ -137,8 +138,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @kyc-match_05_success_specific_property_false
-  # This scenario test the false result as scenario kyc-match_03_success_specific_property_score but without the score properties
+  @kyc-match_kycMatch_05_success_specific_property_false
+  # This scenario test the false result as scenario kyc-match_kycMatch_03_success_specific_property_score but without the score properties
   Scenario Outline: Validate success response when providing specific property with false value and without the score properties
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body is set to a valid parameter combination with property "<request_property_path>" set to a valid formatted value that does not match the value stored in the MNO system
@@ -153,6 +154,7 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.idDocument              | $.idDocumentMatch             |
       | $.idDocumentType          | $.idDocumentTypeMatch         |
       | $.idDocumentExpiryDate    | $.idDocumentExpiryDateMatch   |
+      | $.bankAccountNumber       | $.bankAccountNumberMatch      |
       | $.name                    | $.nameMatch                   |
       | $.givenName               | $.givenNameMatch              |
       | $.familyName              | $.familyNameMatch             |
@@ -174,10 +176,11 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
       | $.countryOfBirth          | $.countryOfBirthMatch         |
       | $.nationality             | $.nationalityMatch            |
 
-  @kyc-match_06_success_multiple_optional_parameter_combinations
+  @kyc-match_kycMatch_06_success_multiple_optional_parameter_combinations
   Scenario: Validate success response when providing different optional parameter combinations
     Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
     And the request body property "$.idDocument" is set to a valid identity document
+    And the request body property "$.bankAccountNumber" is set to a valid bank account number
     And the request body property "$.name" is set to a valid name
     And the request body property "$.givenName" is set to a valid given name
     And the request body property "$.familyName" is set to a valid family name
@@ -198,18 +201,6 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the request body property "$.gender" is set to a valid gender value that belongs to the enumeration ("MALE", "FEMALE", "OTHER")
     And the request body property "$.nationality" is set to the country for the nationality and complies with the ISO 3166-1 alpha-2 format
     And the given request body is populated with any random combination of afore mention optional parameters
-    When the request "kycMatch" is sent
-    Then the response status code is 200
-    And the response header "x-correlator" has same value as the request header "x-correlator"
-    And the response header "Content-Type" is "application/json"
-    And the response body complies with the OAS schema at "#/components/schemas/KycMatchResponse"
-
-  @kyc-match_07_success_id_document_required
-  # Note: This test scenario is optional, as idDocument parameter and Second Level Validation is optional to network operators/ API providers.
-  Scenario: Validate success when idDocument is required to perform the match validation for any other property
-    Given a valid testing phone number supported by the service, identified by the access token or provided in the request body
-    And the request body property "$.idDocument" is set to a valid identity document associated with the identified phoneNumber
-    And the request body is set to a valid parameter combination
     When the request "kycMatch" is sent
     Then the response status code is 200
     And the response header "x-correlator" has same value as the request header "x-correlator"
@@ -267,9 +258,26 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     Given the header "x-correlator" does not comply with the schema at "#/components/schemas/XCorrelator"
     When the request "kycMatch" is sent
     Then the response status code is 400
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 400
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
+
+  @kyc-match_kycMatch_400.09_request_body_strictness
+  Scenario Outline: Undeclared property in request body
+    Given the request body is set to a valid request body
+    And the request body includes the property "<undeclared_property>" which is not declared in the schema at "#/components/schemas/KycMatchRequestBody"
+    When the request "kycMatch" is sent
+    Then the response status code is 400
+    And the response header "Content-Type" is "application/json"
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response property "$.status" is 400
+    And the response property "$.code" is "INVALID_ARGUMENT"
+    And the response property "$.message" contains a user friendly text
+
+    Examples:
+      | undeclared_property   |
+      | $.undeclaredProperty  |
 
   # Service Error scenarios
 
@@ -345,6 +353,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the threshold of requests has been reached
     When the request "kycMatch" is sent
     Then the response status code is 429
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 429
     And the response property "$.code" is "TOO_MANY_REQUESTS"
     And the response property "$.message" contains a user friendly text
@@ -359,6 +369,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the request body property "$.phoneNumber" does not comply with the OAS schema at "#/components/schemas/PhoneNumber"
     When the request "kycMatch" is sent
     Then the response status code is 400
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 400
     And the response property "$.code" is "INVALID_ARGUMENT"
     And the response property "$.message" contains a user friendly text
@@ -370,6 +382,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the request body property "$.phoneNumber" is compliant with the schema but does not identify a valid phone number
     When the request "kycMatch" is sent
     Then the response status code is 404
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 404
     And the response property "$.code" is "IDENTIFIER_NOT_FOUND"
     And the response property "$.message" contains a user friendly text
@@ -381,6 +395,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And  the request body property "$.phoneNumber" is set to a valid phone number
     When the request "kycMatch" is sent
     Then the response status code is 422
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 422
     And the response property "$.code" is "UNNECESSARY_IDENTIFIER"
     And the response property "$.message" contains a user friendly text
@@ -391,6 +407,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And the request body property "$.phoneNumber" is not included
     When the request "kycMatch" is sent
     Then the response status code is 422
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 422
     And the response property "$.code" is "MISSING_IDENTIFIER"
     And the response property "$.message" contains a user friendly text
@@ -402,6 +420,8 @@ Feature: CAMARA Know Your Customer Match API, vwip - Operation kycMatch
     And a valid phone number, identified by the token or provided in the request body, for which the service is not applicable
     When the request "kycMatch" is sent
     Then the response status code is 422
+    And the response header "x-correlator" has same value as the request header "x-correlator"
+    And the response header "Content-Type" is "application/json"
     And the response property "$.status" is 422
     And the response property "$.code" is "SERVICE_NOT_APPLICABLE"
     And the response property "$.message" contains a user friendly text
