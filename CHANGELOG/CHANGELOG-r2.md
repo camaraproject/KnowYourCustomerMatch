@@ -81,6 +81,10 @@ Changes documented below are compared to version 0.4.0.
 
 * Added the optional request property `bankAccountNumber` (format `PREFIX:VALUE`, for example `IBAN:NL59ABNA0123456789`) and the response property `bankAccountNumberMatch` by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/73
 * Documented the `429 TOO_MANY_REQUESTS` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91 and https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* The following addtions were made to the test scenario by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
+  * `bankAccountNumber` was added and now addressed in the scenarios `02`, `04`, `05`, and `06`.
+  * added `the response header Content-Type is application/json` to some test scenarios.
+  * added the test scenario `400.09` (unkonown request body properties).
 
 ### Changed
 
@@ -94,16 +98,22 @@ Changes documented below are compared to version 0.4.0.
 * Renamed the `operationId` from `KYC_Match` to `kycMatch`, the schemas `KYC_MatchRequestBody` and `KYC_MatchResponse` to `KycMatchRequestBody` and `KycMatchResponse`, and the OpenAPI tag `Match` to `Check Subscriber Information` (no change to paths, methods or payloads) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/83 and @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/100
 * Improved the API documentation: highlighted that the match score uses the Jaro-Winkler distance algorithm unless the Operator states otherwise, and renamed the request examples to "Example when using a Two-legged access token" and "Example when using a Three-legged access token" by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 * Updated the test definitions: scenario `06` lists each optional property explicitly, and the invalid parameter combination is tested in one scenario for 3-legged and one for 2-legged access tokens (`400.03`, `400.04`, replacing scenario `10`) by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95 and @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
+* The test scenarios were renamed using a single feature identifier in the scenario tags by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117
+* The following changes were made in the API description for Commonalities r4.4 alignment by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
+  * Documentation on Error handling of `422 MISSING_IDENTIFIER` was changed.
+  * The mandatory markers were added to `Identifying the phone number from access token` part.
 
 ### Fixed
 
 * Corrected test scenario `05` (false match without score) to send a value that does not match the stored value by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/58
 * Corrected the expected error for an empty request body `{}` to `400 KNOW_YOUR_CUSTOMER.INVALID_PARAM_COMBINATION` in test scenario `400.03`, as stated in the `POST /match` description (was `400 INVALID_ARGUMENT`) by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97 and @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
+* Some minor typos and wordings were corrected in the API description and the test scenarios by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117
 
 ### Removed
 
 * Removed the additional `idDocument` validation that Operators could require before the match check, together with the error codes `403 KNOW_YOUR_CUSTOMER.ID_DOCUMENT_REQUIRED` and `403 KNOW_YOUR_CUSTOMER.ID_DOCUMENT_MISMATCH` and their test scenarios by @fernandopradocabrillo in https://github.com/camaraproject/KnowYourCustomerMatch/pull/54
 * Removed `NOT_FOUND` from the documented `404` error codes; `404 IDENTIFIER_NOT_FOUND` remains by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
+* Test scenario `07` and implementation indication on a mandatory `idDocument` were removed from the test scenarios by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117
 
 **Full Changelog**: https://github.com/camaraproject/KnowYourCustomerMatch/compare/r1.2...r2.3
 
