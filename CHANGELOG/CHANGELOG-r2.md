@@ -99,9 +99,9 @@ Changes documented below are compared to version 0.4.0.
 * Improved the API documentation: highlighted that the match score uses the Jaro-Winkler distance algorithm unless the Operator states otherwise, and renamed the request examples to "Example when using a Two-legged access token" and "Example when using a Three-legged access token" by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91
 * Updated the test definitions: scenario `06` lists each optional property explicitly, and the invalid parameter combination is tested in one scenario for 3-legged and one for 2-legged access tokens (`400.03`, `400.04`, replacing scenario `10`) by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/95 and @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/106
 * The test scenarios were renamed using a single feature identifier in the scenario tags by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117
-* The following changes were made in the API description for Commonalities r4.4 alignment by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
-  * Documentation on Error handling of `422 MISSING_IDENTIFIER` was changed.
-  * The mandatory markers were added to `Identifying the phone number from access token` part.
+* Aligned the API description with the Commonalities r4.4 template by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
+  * removed from the `422 MISSING_IDENTIFIER` error handling text the sentence that this error is typically returned in 2-legged scenarios
+  * added the mandatory markers to the section "Identifying the phone number from the access token"
 
 ### Fixed
 
