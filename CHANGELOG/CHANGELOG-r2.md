@@ -81,10 +81,10 @@ Changes documented below are compared to version 0.4.0.
 
 * Added the optional request property `bankAccountNumber` (format `PREFIX:VALUE`, for example `IBAN:NL59ABNA0123456789`) and the response property `bankAccountNumberMatch` by @ToshiWakayama-KDDI in https://github.com/camaraproject/KnowYourCustomerMatch/pull/73
 * Documented the `429 TOO_MANY_REQUESTS` error response by @GillesInnov35 in https://github.com/camaraproject/KnowYourCustomerMatch/pull/91 and https://github.com/camaraproject/KnowYourCustomerMatch/pull/97
-* The following addtions were made to the test scenario by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
-  * `bankAccountNumber` was added and now addressed in the scenarios `02`, `04`, `05`, and `06`.
-  * added `the response header Content-Type is application/json` to some test scenarios.
-  * added the test scenario `400.09` (unkonown request body properties).
+* Extended the test definitions by @albertoramosmonagas in https://github.com/camaraproject/KnowYourCustomerMatch/pull/117:
+  * scenarios `02`, `04`, `05` and `06` cover `bankAccountNumber`
+  * the error scenarios that lacked them now check the `x-correlator` and `Content-Type` response headers
+  * new scenario `400.09` tests unknown request body properties
 
 ### Changed
 
